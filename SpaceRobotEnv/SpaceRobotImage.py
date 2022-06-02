@@ -416,7 +416,7 @@ class SpacerobotEnv(RobotEnv):
 
 
 
-class SpaceReachEnv(SpacerobotEnv, gym.utils.EzPickle):
+class SpaceRobotImage(SpacerobotEnv, gym.utils.EzPickle):
     def __init__(self, reward_type='nosparse'):
         initial_qpos = {
             'arm:shoulder_pan_joint': 0.0,
