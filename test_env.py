@@ -1,6 +1,5 @@
 import SpaceRobotEnv
 import numpy as np
-import gym
 
 env = SpaceRobotEnv.SpaceRobotState()
 

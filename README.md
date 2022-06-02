@@ -40,9 +40,114 @@ Environments of this repo are as follows:
 
 ## Installation
 
-Our environment is built on the [Mujoco Simulation]() .
-Additionally, we takes 
-Details regarding installation of Gym can be found [here](https://developer.nvidia.com/isaac-gym).
+Our environment is built on the [Mujoco Simulation](https://github.com/deepmind/mujoco). So before using our repo, please make sure you install the [Mujoco](https://github.com/deepmind/mujoco) platform.
+Additionally, our framework is based on the [Gym](https://github.com/openai/gym).
+Details regarding installation of Gym can be found [here](https://github.com/openai/gym).
 
+After you finish the installation of the Mujoco and Gym and test some toy examples using them, you can install this repo from the source code:
+
+```bash
+pip install -e .
+```
+
+## Quick Start
+
+We provide a Gym-Like API that allows us to get interacting information. `test_env.py` shows a toy example to verify the environments.
+As you can see, A Gym-Like API makes some popular RL-based algorithm repos, like [Stable Baselines3](https://github.com/DLR-RM/stable-baselines3), easily implemented in our environments.
+```python
+import SpaceRobotEnv
+import numpy as np
+
+env = SpaceRobotEnv.SpaceRobotState()
+
+dimu = env.action_space.shape
+print(dimu)
+dimo = env.observation_space['observation'].shape
+print(dimo)
+
+
+observation = env.reset()
+max_action = env.action_space.high
+print('max_action:',max_action)
+print('mmin_action',env.action_space.low)
+for e_step in range(20):
+    observation = env.reset()
+    for i_step in range(50):
+        env.render()
+        # print(observation)
+        # action = env.action_space.sample()
+        action = np.random.uniform(low=-1.0, high=1.0, size=(dimu,))
+        observation, reward, done, info = env.step(max_action * action)
+
+env.close()
+
+```
 
 ## Introduction of free-floating space robot
+
+The free-floating space robot contains two parts, a robotic arm and a base satellite. The robot arm is rigidly connected with the base, and the whole space robot remains in a low-gravity condition.
+The 6-DoF UR5 model is chosen as the robot arm, and to simplify, we considered the base as a cubic structure. The specific structure is shown as follows.
+
+<div align=center>
+<img src="image_folder/robot.png" align="center" width="600"/>
+</div> 
+
+
+## Future plan
+
+
+### Tasks under development:  
+  - [ ] Point cloud inputs
+  - [ ] Add new torque controllers, like impedance controller.
+  - [ ] Bulid new environments
+
+### Algorithms:
+  - [ ] PPO
+  - [ ] TRPO
+  - [ ] SAC
+  - [ ] HER
+  - [ ] [HDO](https://ieeexplore.ieee.org/abstract/document/9718193)
+
+## Citing SpaceRobotEnv
+
+If you find SpaceRobotEnv useful, please cite our recent work in your publications. 
+
+```
+@article{wang2022collision,
+  title={Collision-Free Trajectory Planning for a 6-DoF Free-Floating Space Robot via Hierarchical Decoupling Optimization},
+  author={Wang, Shengjie and Cao, Yuxue and Zheng, Xiang and Zhang, Tao},
+  journal={IEEE Robotics and Automation Letters},
+  volume={7},
+  number={2},
+  pages={4953--4960},
+  year={2022},
+  publisher={IEEE}
+}
+
+@inproceedings{wang2021multi,
+  title={A Multi-Target Trajectory Planning of a 6-DoF Free-Floating Space Robot via Reinforcement Learning},
+  author={Wang, Shengjie and Zheng, Xiang and Cao, Yuxue and Zhang, Tao},
+  booktitle={2021 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  pages={3724--3730},
+  organization={IEEE}
+}
+
+@inproceedings{wang2021end,
+  title={An End-to-End Trajectory Planning Strategy for Free-floating Space Robots},
+  author={Wang, Shengjie and Cao, Yuxue and Zheng, Xiang and Zhang, Tao},
+  booktitle={2021 40th Chinese Control Conference (CCC)},
+  pages={4236--4241},
+  year={2021},
+  organization={IEEE}
+}
+```  
+  
+## The Team
+
+SpaceRobotEnv is a project contributed by 
+[Shengjie Wang](https://github.com/Shengjie-bob), [Xiang Zheng](https://github.com/x-zheng16), [Yuxue Cao](https://github.com/ShenGe123000) at Tsinghua University, 
+
+
+## License
+
+SpaceRobotEnv has an Apache license, as found in the [LICENSE](LICENSE) file.
