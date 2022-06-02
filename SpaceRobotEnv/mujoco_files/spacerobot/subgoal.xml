@@ -1,0 +1,161 @@
+<mujoco>
+    <!-- Subgoal 0: Yellow -->
+    <!-- <body name="end_goal_upper_arm" pos="0 0 0" mocap="true">
+        <site name="end_goal_upper_arm" type="box" size="0.1 0.1 0.1" rgba="1 1 0 0.3" />
+    </body>
+
+    <body name="end_goal_forearm" pos="0 0 0" mocap="true">
+        <site name="end_goal_forearm" type="box" size="0.1 0.1 0.1" rgba="1 1 0 0.3" />
+    </body>
+
+    <body name="end_goal_wrist_1" pos="0 0 0" mocap="true">
+        <site name="end_goal_wrist_1" type="box" size="0.1 0.1 0.1" rgba="1 1 0 0.3" />
+    </body> -->
+    <body name="subgoal_0_shoulder_arm" pos="0 0 0" mocap="true">
+        <site name="subgoal_0_shoulder_arm" type="capsule" size="0.01 0.0446" rgba="1 1 0 0.3" pos="0 -0.0446 0" euler="-1.5707963 0 0"/>
+    </body>
+
+    <body name="subgoal_0_upper_arm" pos="0 0 0" mocap="true">
+        <site name="subgoal_0_upper_arm"  type="capsule" size="0.02 0.2125" rgba="1 1 0 0.3" pos="0.2125 0 0" euler="0 1.5707963 0"/>
+    </body>
+
+    <body name="subgoal_0_forearm" pos="0 0 0" mocap="true">
+        <site name="subgoal_0_forearm"  type="capsule" size="0.02 0.1961" rgba="1 1 0 0.3" pos="0.1961 0 0" euler="0 1.5707963 0"/>
+    </body>
+
+    <body name="subgoal_0_wrist_1" pos="0 0 0" mocap="true">
+        <site name="subgoal_0_wrist_1"  type="capsule" size="0.02 0.0465" rgba="1 1 0 0.3" pos="0 -0.0465 0" euler="-1.5707963 0 0"/>
+    </body>
+
+    <body name="subgoal_0_wrist_2" pos="0 0 0" mocap="true">
+        <site name="subgoal_0_wrist_2"  type="capsule" size="0.02 0.0473" rgba="1 1 0 0.3" pos="0 0.0473 0" euler="-1.5707963 0 0"/>
+    </body>
+
+    <body name="subgoal_0_wrist_3" pos="0 0 0" mocap="true">
+        <site name="subgoal_0_wrist_3"  type="capsule" size="0.02 0.0411" rgba="1 1 0 0.3" pos="0 0 -0.0411"/>
+    </body>
+
+    <body name="subgoal_0_tip" pos="0 0 0" mocap="true">
+        <site name="subgoal_0_tip:x" pos="0.0618 0 0" size="0.01 0.0618" type="cylinder" rgba="1 0 0 1" euler="0 1.5707963 0" />
+        <site name="subgoal_0_tip:y" pos="0 0.0618 0" size="0.01 0.0618" type="cylinder" rgba="0 1 0 1" euler="-1.5707963 0 0" />
+        <site name="subgoal_0_tip:z" pos="0 0 0.0618" size="0.01 0.0618" type="cylinder" rgba="0 0 1 1"/>
+    </body>
+
+    <!-- Subgoal 1: Purple -->
+    <!-- <body name="subgoal_1_upper_arm" pos="0 0 0" mocap="true">
+        <site name="subgoal_1_upper_arm" type="box" size="0.09 0.09 0.09" rgba="1 0 1 0.5" />
+    </body>
+
+    <body name="subgoal_1_forearm" pos="0 0 0" mocap="true">
+        <site name="subgoal_1_forearm" type="box" size="0.09 0.09 0.09" rgba="1 0 1 0.5" />
+    </body>
+
+    <body name="subgoal_1_wrist_1" pos="0 0 0" mocap="true">
+        <site name="subgoal_1_wrist_1" type="box" size="0.09 0.09 0.09" rgba="1 0 1 0.5" />
+    </body> -->
+    <body name="subgoal_1_shoulder_arm" pos="0 0 0" mocap="true">
+        <site name="subgoal_1_shoulder_arm" type="capsule" size="0.01 0.0446" rgba="1 0 1 0.5" pos="0 -0.0446 0" euler="-1.5707963 0 0"/>
+    </body>
+
+    <body name="subgoal_1_upper_arm" pos="0 0 0" mocap="true">
+        <site name="subgoal_1_upper_arm"  type="capsule" size="0.02 0.2125" rgba="1 0 1 0.5" pos="0.2125 0 0" euler="0 1.5707963 0"/>
+    </body>
+
+    <body name="subgoal_1_forearm" pos="0 0 0" mocap="true">
+        <site name="subgoal_1_forearm"  type="capsule" size="0.02 0.1961" rgba="1 0 1 0.5" pos="0.1961 0 0" euler="0 1.5707963 0"/>
+    </body>
+
+    <body name="subgoal_1_wrist_1" pos="0 0 0" mocap="true">
+        <site name="subgoal_1_wrist_1"  type="capsule" size="0.02 0.0465" rgba="1 0 1 0.5" pos="0 -0.0465 0" euler="-1.5707963 0 0"/>
+    </body>
+
+    <body name="subgoal_1_wrist_2" pos="0 0 0" mocap="true">
+        <site name="subgoal_1_wrist_2"  type="capsule" size="0.02 0.0473" rgba="1 0 1 0.5" pos="0 0.0473 0" euler="-1.5707963 0 0"/>
+    </body>
+
+    <body name="subgoal_1_wrist_3" pos="0 0 0" mocap="true">
+        <site name="subgoal_1_wrist_3"  type="capsule" size="0.02 0.0411" rgba="1 0 1 0.5" pos="0 0 -0.0411"/>
+    </body>
+
+    <body name="subgoal_1_tip" pos="0 0 0" mocap="true">
+        <site name="subgoal_1_tip:x" pos="0.0618 0 0" size="0.01 0.0618" type="cylinder" rgba="1 0 0 1" euler="0 1.5707963 0" />
+        <site name="subgoal_1_tip:y" pos="0 0.0618 0" size="0.01 0.0618" type="cylinder" rgba="0 1 0 1" euler="-1.5707963 0 0" />
+        <site name="subgoal_1_tip:z" pos="0 0 0.0618" size="0.01 0.0618" type="cylinder" rgba="0 0 1 1"/>
+    </body>
+
+    <!-- Subgoal 2: Red -->
+    <body name="subgoal_2_shoulder_arm" pos="0 0 0" mocap="true">
+        <site name="subgoal_2_shoulder_arm" type="capsule" size="0.01 0.0446" rgba="1 0 0 0.7" pos="0 -0.0446 0" euler="-1.5707963 0 0"/>
+    </body>
+
+    <body name="subgoal_2_upper_arm" pos="0 0 0" mocap="true">
+        <site name="subgoal_2_upper_arm"  type="capsule" size="0.02 0.2125" rgba="1 0 0 0.7" pos="0.2125 0 0" euler="0 1.5707963 0"/>
+    </body>
+
+    <body name="subgoal_2_forearm" pos="0 0 0" mocap="true">
+        <site name="subgoal_2_forearm"  type="capsule" size="0.02 0.1961" rgba="1 0 0 0.7" pos="0.1961 0 0" euler="0 1.5707963 0"/>
+    </body>
+
+    <body name="subgoal_2_wrist_1" pos="0 0 0" mocap="true">
+        <site name="subgoal_2_wrist_1"  type="capsule" size="0.02 0.0465" rgba="1 0 0 0.7" pos="0 -0.0465 0" euler="-1.5707963 0 0"/>
+    </body>
+
+    <body name="subgoal_2_wrist_2" pos="0 0 0" mocap="true">
+        <site name="subgoal_2_wrist_2"  type="capsule" size="0.02 0.0473" rgba="1 0 0 0.7" pos="0 0.0473 0" euler="-1.5707963 0 0"/>
+    </body>
+
+    <body name="subgoal_2_wrist_3" pos="0 0 0" mocap="true">
+        <site name="subgoal_2_wrist_3"  type="capsule" size="0.02 0.0411" rgba="1 0 0 0.7" pos="0 0 -0.0411"/>
+    </body>
+
+    <body name="subgoal_2_tip" pos="0 0 0" mocap="true">
+        <site name="subgoal_2_tip:x" pos="0.0618 0 0" size="0.01 0.0618" type="cylinder" rgba="1 0 0 1" euler="0 1.5707963 0" />
+        <site name="subgoal_2_tip:y" pos="0 0.0618 0" size="0.01 0.0618" type="cylinder" rgba="0 1 0 1" euler="-1.5707963 0 0" />
+        <site name="subgoal_2_tip:z" pos="0 0 0.0618" size="0.01 0.0618" type="cylinder" rgba="0 0 1 1"/>
+    </body>
+
+    <!-- Subgoal 3: Green -->
+    <!-- <body name="subgoal_3" pos="0 0 0" mocap="true">
+        <site name="subgoal_3"  type="box" size="0.08 0.08 0.08" rgba="0 1 0 0" />
+    </body> -->
+    <body name="endgoal" pos="0 0 0" mocap="true">
+        <site name="endgoal"  type="box" size="0.1 0.1 0.1" rgba="1 0 0 0.3" />
+    </body>
+
+    <!-- Subgoal 4: Blue -->
+    <!-- <body name="subgoal_4" pos="0 0 0" mocap="true">
+        <site name="subgoal_4"  type="box" size="0.08 0.08 0.08" rgba="0 0 1 0" />
+    </body> -->
+
+    <!-- Subgoal 5: Cyan -->
+    <!-- <body name="subgoal_5" pos="0 0 0" mocap="true">
+        <site name="subgoal_5"  type="box" size="0.08 0.08 0.08" rgba="0 1 1 0" />
+    </body> -->
+
+    <!-- Subgoal 6: Orange -->
+    <!-- <body name="subgoal_6" pos="0 0 0" mocap="true">
+        <site name="subgoal_6"  type="box" size="0.08 0.08 0.08" rgba="1 0.65 0 0" />
+    </body> -->
+
+    <!-- Subgoal 7: Maroon -->
+    <!-- <body name="subgoal_7" pos="0 0 0" mocap="true">
+        <site name="subgoal_7"  type="box" size="0.08 0.08 0.08" rgba="0.5 0 0 0" />
+    </body> -->
+
+    <!-- Subgoal 8: Gray -->
+    <!-- <body name="subgoal_8" pos="0 0 0" mocap="true">
+        <site name="subgoal_8"  type="box" size="0.08 0.08 0.08" rgba="0.5 0.5 0.5 0" />
+    </body> -->
+
+    <!-- Subgoal 9: White -->
+    <!-- <body name="subgoal_9" pos="0 0 0" mocap="true">
+        <site name="subgoal_9"  type="box" size="0.08 0.08 0.08" rgba="1 1 1 0" />
+    </body> -->
+
+    <!-- Subgoal 10: Black -->
+    <!-- <body name="subgoal_10" pos="0 0 0" mocap="true">
+        <site name="subgoal_10"  type="box" size="0.08 0.08 0.08" rgba="0 0 0 0" />
+    </body> -->
+
+
+</mujoco>

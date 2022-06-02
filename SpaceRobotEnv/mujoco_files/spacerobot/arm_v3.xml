@@ -1,0 +1,60 @@
+<!-- unit quat in mujoco xml is "1 0 0 0"  [ w, x, y, z]-->
+<!-- "0.707107 0 0.707107 0" = [ x: 0, y: 1.5707963(90), z: 0 ]-->
+<!-- "0.5 0.5 -0.5 0.5" = [ x: 1.5707963(90), y: 0, z: 1.5707963(90) ]-->
+<mujoco>
+    <body name="base_link" pos="0 0 0" euler="0 0 3.1415927"> <!--base_link是机械臂的起点，固连在charset上,所以其实要改变charset的位置-->
+        <inertial pos="-0.00083 0 0.00758" mass="4" diaginertia="0.00443333 0.00443333 0.0072" />
+        <geom name="v_base_link" type="mesh" group="1" mesh="v_base" euler="0 0 -1.5707963"/>
+
+        <!-- joint 1 : a joint creates motion degrees of freedom between the body where it is defined and the body's parent
+            joint 1 定义了 link1 与 link0 之间的运动关系-->
+        <body name="shoulder_link" pos="0 0 0.089159" euler="1.5707963 0 0">
+            <inertial pos="0 -0.02561 0.00193" mass="3.7" diaginertia="0.0067 0.0064 0.0067" />
+            <joint class="arm1" name="arm:shoulder_pan_joint" axis="0 1 0" pos="0 -0.02561 0"/>
+            <geom name="v_shoulder_link" type="mesh" group="1"  mesh="v_shoulder" euler="1.5707963 3.1415927 0"/>
+            <site name="shoulder_site" pos="0 0 .03" type="box" size=".02 .02 .02"/>
+
+            <body name="upper_arm_link" pos="-0.425 0 0">
+                <inertial pos="0.2125 0 0.11336" mass="8.393" diaginertia="0.0149 0.3564 0.3553" />
+                <joint class="arm1" name="arm:shoulder_lift_joint" axis="0 0 1" pos="0.425 0 0.13585"/>
+                <geom name="v_upper_arm_link" type="mesh" group="1" mesh="v_upperarm" pos="0.425 0 0.13585" euler="1.5707963 -1.5707963 0"/>
+                <site name="upperarm_site" pos="0 0 .03" type="box" size=".02 .02 .02"/>
+
+                <body name="forearm_link" pos="-0.39225 0 0">
+                    <inertial pos="0.11993 0 0.0265" mass="2.275" fullinertia="0.0025 0.0551 0.0546 0 0.0034 0" />
+                    <joint class="arm1" name="arm:elbow_joint" pos="0.39225 0 0.13585" axis="0 0 1"  />
+                    <geom name="v_forearm_link" type="mesh" group="1" mesh="v_forearm" pos="0.39225 0 0.0161" euler="1.5707963 -1.5707963 0"/>
+                    <site name="forearm_site" pos="0 0 .03" type="box" size=".02 .02 .02"/>
+
+                    <body name="wrist_1_link" pos="0 0 0.093" euler="1.5707963 0 0">
+                        <inertial pos="0 -0.0018 0.01634" mass="1.219" diaginertia="0.0012 0.0012 0.0009" />
+                        <joint class="arm2" name="arm:wrist_1_joint" pos="0 -0.093 0" axis="0 1 0" />
+                        <geom name="v_wrist_1_link" type="mesh" group="1" mesh="v_wrist1" pos="0 -0.093 0"/>
+                        <site name="wrist1_site" pos="0 0 .03" type="box" size=".01 .01 .01"/>
+
+                        <body name="wrist_2_link" pos="0 0 0.09465" euler="-1.5707963 0 0">
+                            <inertial pos="0 0.0018 0.01634" mass="1.219" diaginertia="0.0012 0.0012 0.0009" />
+                            <joint class="arm2" name="arm:wrist_2_joint" pos="0 0.09465 0" axis="0 -1 0"  />
+                            <geom name="v_wrist_2_link" type="mesh" group="1" mesh="v_wrist2" pos="0 0.09465 0" euler="1.5707963 0 0"/>
+                            <site name="wrist2_site" pos="0 0 .03" type="box" size=".01 .01 .01"/>
+
+                            <body name="wrist_3_link" pos="0 0 0.0823">
+                                <inertial pos="0 0 -0.01159" mass="0.1879" diaginertia="0.0000884489143 0.0000884489143 0.000138534912" />
+                                <joint class="arm2" name="arm:wrist_3_joint" pos="0 0 -0.0823" axis="0 0 1"  />
+                                <geom name="v_wrist_3_link" type="mesh" group="1" mesh="v_wrist3" pos="0 0 -0.0823" euler="1.5707963 0 0"/>
+                                <site name="wrist3_site" pos="0 0 .03" type="box" size=".01 .01 .01"/>
+
+                                <body name="tip_frame" pos="0 0 0.06">
+                                    <site name="tip_frame:x" pos="0.0618 0 0" size="0.01 0.0618" type="cylinder" rgba="1 0 0 1" euler="0 1.5707963 0" />
+                                    <site name="tip_frame:y" pos="0 0.0618 0" size="0.01 0.0618" type="cylinder" rgba="0 1 0 1" euler="-1.5707963 0 0" />
+                                    <site name="tip_frame:z" pos="0 0 0.0618" size="0.01 0.0618" type="cylinder" rgba="0 0 1 1"/>
+                                </body>
+                            </body>
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+    </body>
+
+</mujoco>

@@ -1,0 +1,42 @@
+<sensor>
+    <touch name="gripperpalm_frc" site="gripperpalm"/>
+    <touch name="finger_1_link_1_frc" site="gf_1_link_1"/>
+    <touch name="finger_1_link_2_frc" site="gf_1_link_2"/>
+    <touch name="finger_1_link_3_frc" site="gf_1_link_3"/>
+    <touch name="finger_2_link_1_frc" site="gf_2_link_1"/>
+    <touch name="finger_2_link_2_frc" site="gf_2_link_2"/>
+    <touch name="finger_2_link_3_frc" site="gf_2_link_3"/>
+    <touch name="finger_m_link_1_frc" site="gf_m_link_1"/>
+    <touch name="finger_m_link_2_frc" site="gf_m_link_2"/>
+    <touch name="finger_m_link_3_frc" site="gf_m_link_3"/>
+
+    <framepos name="gripper_pos" objtype="site" objname="gripperpalm_middle"/>
+    <framequat name="gripper_quat" objtype="site" objname="gripperpalm_middle"/>
+    <framelinvel name="gripper_linvel" objtype="site" objname="gripperpalm_middle"/>
+    <frameangvel name="gripper_angvel" objtype="site" objname="gripperpalm_middle"/>
+    <framelinacc name="gripper_linacc" objtype="site" objname="gripperpalm_middle"/>
+    <frameangacc name="gripper_angacc" objtype="site" objname="gripperpalm_middle"/>
+
+    <framepos name="target_pos" objtype="site" objname="target"/>
+    <framequat name="target_quat" objtype="site" objname="target"/>
+    <framelinvel name="target_linvel" objtype="site" objname="target"/>
+    <frameangvel name="target_angvel" objtype="site" objname="target"/>
+    <framelinacc name="target_linacc" objtype="site" objname="target"/>
+    <frameangacc name="target_angacc" objtype="site" objname="target"/>
+
+    <framepos name="chasersat_pos" objtype="site" objname="chasersat"/>
+    <framequat name="chasersat_quat" objtype="site" objname="chasersat"/>
+    <framelinvel name="chasersat_linvel" objtype="site" objname="chasersat"/>
+    <frameangvel name="chasersat_angvel" objtype="site" objname="chasersat"/>
+    <framelinacc name="chasersat_linacc" objtype="site" objname="chasersat"/>
+    <frameangacc name="chasersat_angacc" objtype="site" objname="chasersat"/>
+
+    <actuatorpos name="shoulder_pan_P_pos" actuator="shoulder_pan_P"/>
+    <actuatorvel name="shoulder_pan_P_vel" actuator="shoulder_pan_P"/>
+    <actuatorfrc name="shoulder_pan_P_frc" actuator="shoulder_pan_P"/>
+    <actuatorfrc name="shoulder_lift_P_frc" actuator="shoulder_lift_P"/>
+    <actuatorfrc name="forearm_P_frc" actuator="forearm_P"/>
+    <actuatorfrc name="wrist_1_P_frc" actuator="wrist_1_P"/>
+    <actuatorfrc name="wrist_2_P_frc" actuator="wrist_2_P"/>
+    <actuatorfrc name="wrist_3_P_frc" actuator="wrist_3_P"/>
+</sensor>

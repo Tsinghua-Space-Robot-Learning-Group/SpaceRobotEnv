@@ -1,0 +1,120 @@
+<?xml version="1.0" ?>
+<mujoco model="ur5">
+    <compiler angle="radian" coordinate="local" eulerseq="xyz"/>
+    <option cone="elliptic" gravity="0 0 0" impratio="5" timestep="0.001" tolerance="1e-10"/>
+    <default class="main">
+        <joint damping="0" armature="1"/>
+        <geom condim="4" solimp="0.99 0.99 0.01" solref="0.01 1"/>
+        <default class="arm1">
+            <joint damping="0"/>
+        </default>
+        <default class="arm2">
+            <joint damping="0"/>
+        </default>
+    </default>
+
+    <include file="../common/visual.xml"/>
+    <include file="../common/skybox.xml"/>
+    <include file="../common/materials.xml"/>
+    <include file="asset.xml"/>
+
+    <worldbody>
+        <geom name="floor" size="5 5 .2" type="plane" material="grid"/>
+<!--        <geom name="circle" type="mesh"  group="1" mesh="R10" rgba="0 1 0 0.3" contype="0" conaffinity="0" euler="0 1.5707963 0"/>-->
+
+
+        <camera mode="targetbody" name="cam_to_dockingring" pos="4 2 7" target="chasersat"/>
+        <light dir="0 0 -1" directional="true" name="light1" pos="0 -1 6"/>
+        <light dir="0 0 -1" directional="true" name="light2" pos="0 1 6"/>
+
+        <site name="target0" pos="0 0 4.5" size="0.04 0.04 0.04" rgba="1 0 0 0.4" type="box"></site>
+        <site name="target1" pos="0 0 4.5" size="0.04 0.04 0.04" rgba="0 0 1 0.4" type="box"></site>
+
+
+        <site name="body" pos="0 0 4" size="0.4726 0.4726 0.4726" rgba="1 0 0 0.4" type="box"></site>
+        <body name="chasersat" pos="0 0 4">
+            <freejoint name="chasersat:joint"/>
+            <geom name="chasersat" mass="400" pos="0 0 0" size="0.4726 0.4726 0.4726" type="box"/>
+            <site name="chasersat" pos="0 0 0" euler="0 0 0" size="0.01 0.01 0.01" type="box"/>
+
+            <body name="chasersat_base1" pos="0.3 0.5526 0.08" euler="-1.5707963 0 0">
+                <geom name="chasersat_base1" mass="10" pos="0 0 -0.04" size="0.1 0.1 0.04" type="box"/>
+                <include file="arm_v3.xml"/>
+            </body>
+            <body name="chasersat_base2" pos="0.3 -0.5526 0.08" euler="1.5707963 0 0">
+                <geom name="chasersat_base2" mass="10" pos="0 0 -0.04" size="0.1 0.1 0.04" type="box"/>
+                <include file="arm_v31.xml"/>
+            </body>
+
+            <body name="chasersat_frame" pos="0.07 0.07 0.5526">
+                <site name="chasersat_frame:x" pos="0.0618 0 0" size="0.01 0.0618" type="cylinder" rgba="1 0 0 1" euler="0 1.5707963 0" />
+                <site name="chasersat_frame:y" pos="0 0.0618 0" size="0.01 0.0618" type="cylinder" rgba="0 1 0 1" euler="-1.5707963 0 0" />
+                <site name="chasersat_frame:z" pos="0 0 0.0618" size="0.01 0.0618" type="cylinder" rgba="0 0 1 1"/>
+            </body>
+        </body>
+
+<!--        <body name="targetsat" pos="1.5 0 4.3" euler="-1.5707963 -1.5707963 3.1415927">-->
+<!--&lt;!&ndash;            <freejoint name="targetsat:joint"/>&ndash;&gt;-->
+<!--            <geom name="targetsat" mass="79" pos="0 0 0" size="0.3 0.3 0.3" type="box" />-->
+<!--            <site name="targetsat" pos="0 0 0" euler="0 0 0" size="0.01 0.01 0.01" type="box"/>-->
+<!--            <body name="targetsat_base" pos="0.54 0 0" euler="0 1.5707963 1.5707963">-->
+<!--                &lt;!&ndash;geom name="targetsat_base" mass="2" pos="0 0 -0.04" size="0.3090 0.04" type="cylinder"/ contype="0" conaffinity="0"&ndash;&gt;-->
+<!--                <geom name="targethold_v1" mass="2" pos="0.1 0 -0.1975" size="0.025 0.025 0.043" type="box" />-->
+<!--                <geom name="targethold_h" mass="2" pos="0.0 0 -0.1375" size="0.025 0.125 0.025" euler="0 0 1.5707963" type="box" />-->
+<!--                <geom name="targethold_v2" mass="2" pos="-0.1 0 -0.1975" size="0.025 0.025 0.043" type="box" />-->
+
+<!--            <body name="target_frame" pos="0 0 -0.07" euler="3.1415927 0 -1.5707963">-->
+<!--                <site name="target_frame:x" pos="0.0618 0 0" size="0.01 0.0618" type="cylinder" rgba="1 0 0 0" euler="0 1.5707963 0" />-->
+<!--                <site name="target_frame:y" pos="0 0.0618 0" size="0.01 0.0618" type="cylinder" rgba="0 1 0 0" euler="-1.5707963 0 0" />-->
+<!--                <site name="target_frame:z" pos="0 0 0.0618" size="0.01 0.0618" type="cylinder" rgba="0 0 1 0"/>-->
+<!--            </body>-->
+<!--            </body>-->
+<!--        </body>-->
+
+        <geom name="cube" type="mesh" group="1" mesh="cube" rgba="0 1 0 0.3" contype="0" conaffinity="0" euler="0 1.5707963 0"/>
+
+        <include file="subgoal.xml" />
+    </worldbody>
+
+    <!-- scalar_force = gain_term * (act or ctrl) + bias_term -->
+    <!-- default: fixed	gain_term = gainprm[0] -->
+    <!-- default: none	bias_term = 0 -->
+    <!--         affine	bias_term = biasprm[0] + biasprm[1]*length + biasprm[2]*velocity -->
+    <actuator>
+        <general biasprm="0 0 -100" biastype="affine" ctrllimited="true" ctrlrange="-2.0942 2.0942" forcelimited="true" forcerange="-150 150" gainprm="100 0 0" joint="arm:shoulder_pan_joint" name="arm:shoulder_pan_T"/>
+        <general biasprm="0 0 -100" biastype="affine" ctrllimited="true" ctrlrange="-2.0942 2.0942" forcelimited="true" forcerange="-150 150" gainprm="100 0 0" joint="arm:shoulder_lift_joint" name="arm:shoulder_lift_T"/>
+        <general biasprm="0 0 -100" biastype="affine" ctrllimited="true" ctrlrange="-2.0942 2.0942" forcelimited="true" forcerange="-150 150" gainprm="100 0 0" joint="arm:elbow_joint" name="arm:elbow_T"/>
+        <general biasprm="0 0 -50" biastype="affine" ctrllimited="true" ctrlrange="-3.14 3.14" forcelimited="true" forcerange="-28 28" gainprm="50 0 0" joint="arm:wrist_1_joint" name="arm:wrist_1_T"/>
+        <general biasprm="0 0 -50" biastype="affine" ctrllimited="true" ctrlrange="-3.14 3.14" forcelimited="true" forcerange="-28 28" gainprm="50 0 0" joint="arm:wrist_2_joint" name="arm:wrist_2_T"/>
+        <general biasprm="0 0 -50" biastype="affine" ctrllimited="true" ctrlrange="-3.14 3.14" forcelimited="true" forcerange="-28 28" gainprm="50 0 0" joint="arm:wrist_3_joint" name="arm:wrist_3_T"/>
+
+        <general biasprm="0 0 -100" biastype="affine" ctrllimited="true" ctrlrange="-2.0942 2.0942" forcelimited="true" forcerange="-150 150" gainprm="100 0 0" joint="arm:shoulder_pan_joint1" name="arm:shoulder_pan_T1"/>
+        <general biasprm="0 0 -100" biastype="affine" ctrllimited="true" ctrlrange="-2.0942 2.0942" forcelimited="true" forcerange="-150 150" gainprm="100 0 0" joint="arm:shoulder_lift_joint1" name="arm:shoulder_lift_T1"/>
+        <general biasprm="0 0 -100" biastype="affine" ctrllimited="true" ctrlrange="-2.0942 2.0942" forcelimited="true" forcerange="-150 150" gainprm="100 0 0" joint="arm:elbow_joint1" name="arm:elbow_T1"/>
+        <general biasprm="0 0 -50" biastype="affine" ctrllimited="true" ctrlrange="-3.14 3.14" forcelimited="true" forcerange="-28 28" gainprm="50 0 0" joint="arm:wrist_1_joint1" name="arm:wrist_1_T1"/>
+        <general biasprm="0 0 -50" biastype="affine" ctrllimited="true" ctrlrange="-3.14 3.14" forcelimited="true" forcerange="-28 28" gainprm="50 0 0" joint="arm:wrist_2_joint1" name="arm:wrist_2_T1"/>
+        <general biasprm="0 0 -50" biastype="affine" ctrllimited="true" ctrlrange="-3.14 3.14" forcelimited="true" forcerange="-28 28" gainprm="50 0 0" joint="arm:wrist_3_joint1" name="arm:wrist_3_T1"/>
+        <!-- <general ctrllimited="true" ctrlrange="-150 150" forcelimited="true" forcerange="-150 150" gainprm="1" joint="arm:shoulder_pan_joint" name="arm:shoulder_pan_T"/>
+        <general ctrllimited="true" ctrlrange="-150 150" forcelimited="true" forcerange="-150 150" gainprm="1" joint="arm:shoulder_lift_joint" name="arm:shoulder_lift_T"/>
+        <general ctrllimited="true" ctrlrange="-150 150" forcelimited="true" forcerange="-150 150" gainprm="1" joint="arm:elbow_joint" name="arm:elbow_T"/> -->
+        <!-- <general ctrllimited="true" ctrlrange="-28 28" forcelimited="true" forcerange="-28 28" gainprm="1" joint="arm:wrist_1_joint" name="arm:wrist_1_T"/>
+        <general ctrllimited="true" ctrlrange="-28 28" forcelimited="true" forcerange="-28 28" gainprm="1" joint="arm:wrist_2_joint" name="arm:wrist_2_T"/>
+        <general ctrllimited="true" ctrlrange="-28 28" forcelimited="true" forcerange="-28 28" gainprm="1" joint="arm:wrist_3_joint" name="arm:wrist_3_T"/> -->
+    </actuator>
+
+    <sensor>
+        <torque name="shoulder_sensor" site="shoulder_site"/>
+        <torque name="upper_arm_sensor" site="upperarm_site"/>
+        <torque name="forearm_sensor" site="forearm_site"/>
+        <torque name="wrist1_sensor" site="wrist1_site"/>
+        <torque name="wrist2_sensor" site="wrist2_site"/>
+        <torque name="wrist3_sensor" site="wrist3_site"/>
+
+        <torque name="shoulder_sensor1" site="shoulder_site1"/>
+        <torque name="upper_arm_sensor1" site="upperarm_site1"/>
+        <torque name="forearm_sensor1" site="forearm_site1"/>
+        <torque name="wrist1_sensor1" site="wrist1_site1"/>
+        <torque name="wrist2_sensor1" site="wrist2_site1"/>
+        <torque name="wrist3_sensor1" site="wrist3_site1"/>
+    </sensor>
+</mujoco>
