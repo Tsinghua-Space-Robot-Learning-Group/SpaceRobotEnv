@@ -4,11 +4,12 @@ import copy
 import numpy as np
 
 import gym
-from gym import error, spaces
+from gym import spaces
 from gym.utils import seeding
 
 from gym.envs.robotics import utils
-from gym.envs.robotics import rotations
+
+# from gym.envs.robotics import rotations
 
 import mujoco_py
 
@@ -254,7 +255,7 @@ class SpacerobotEnv(RobotEnv):
     def _get_obs(self):
         # positions
         grip_pos = self.sim.data.get_body_xpos("tip_frame")
-        grip_velp = self.sim.data.get_body_xvelp("tip_frame") * dt
+        grip_velp = self.sim.data.get_body_xvelp("tip_frame") * self.dt
         robot_qpos, robot_qvel = utils.robot_get_obs(self.sim)
 
         gripper_state = robot_qpos[-1:]

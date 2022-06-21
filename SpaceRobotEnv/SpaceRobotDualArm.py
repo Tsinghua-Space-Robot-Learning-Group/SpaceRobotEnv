@@ -4,11 +4,12 @@ import copy
 import numpy as np
 
 import gym
-from gym import error, spaces
+from gym import spaces
 from gym.utils import seeding
 
 from gym.envs.robotics import utils
-from gym.envs.robotics import rotations
+
+# from gym.envs.robotics import rotations
 
 import mujoco_py
 
