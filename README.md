@@ -17,17 +17,17 @@ To better help the community study this problem, SpaceRobotEnv are developed wit
 
 [Paper link](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9636681)
 <div align=center>
-<img src="image_folder/ral.gif" align="center" width="600"/>
+<img src="SpaceRobotEnv/images/ral.gif" align="center" width="600"/>
 </div> 
 
 [Paper link](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9636681)
 <div align=center>
-<img src="image_folder/iros.gif" align="center" width="600"/>
+<img src="SpaceRobotEnv/images/iros.gif" align="center" width="600"/>
 </div>
 
 [Paper link](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9550509)
 <div align=center>
-<img src="image_folder/ccc.png" align="center" width="600"/>
+<img src="SpaceRobotEnv/images/ccc.png" align="center" width="600"/>
 </div>  
 
 Environments of this repo are as follows:
@@ -91,7 +91,7 @@ The free-floating space robot contains two parts, a robotic arm and a base satel
 The 6-DoF UR5 model is chosen as the robot arm, and to simplify, we considered the base as a cubic structure. The specific structure is shown as follows.
 
 <div align=center>
-<img src="image_folder/robot.png" align="center" width="600"/>
+<img src="SpaceRobotEnv/images/robot.png" align="center" width="600"/>
 </div> 
 
 
