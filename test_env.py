@@ -3,9 +3,9 @@ import numpy as np
 
 env = SpaceRobotEnv.SpaceRobotState()
 
-dimu = env.action_space.shape
+dimu = env.action_space.shape[0]
 print(dimu)
-dimo = env.observation_space['observation'].shape
+dimo = env.observation_space['observation'].shape[0]
 print(dimo)
 
 

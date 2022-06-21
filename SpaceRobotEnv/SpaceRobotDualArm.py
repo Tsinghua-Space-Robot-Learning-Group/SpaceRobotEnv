@@ -12,7 +12,9 @@ from gym.envs.robotics import rotations
 
 import mujoco_py
 
-MODEL_XML_PATH = os.path.join('mujoco_files', 'spacerobot', 'spacerobot_dualarm.xml')
+
+PATH = os.getcwd()
+MODEL_XML_PATH = os.path.join(PATH,'SpaceRobotEnv','mujoco_files', 'spacerobot', 'spacerobot_dualarm.xml')
 DEFAULT_SIZE = 500
 
 
@@ -73,7 +75,7 @@ class RobotEnv(gym.GoalEnv):
         self.np_random, seed = seeding.np_random(seed)
         return [seed]
 
-    def step(self, action, t):  # mujoco中没有step函数,是自己定义的
+    def step(self, action, t= None):  # mujoco中没有step函数,是自己定义的
         action = np.clip(action, self.action_space.low, self.action_space.high)
         self._set_action(action)  # _set_action(action)函数【在SpaceRobot环境中具体定义】,类比mujoco中的do_simulation()函数
         self._step_callback()  # 回调函数不一定要
@@ -86,9 +88,10 @@ class RobotEnv(gym.GoalEnv):
         g = np.concatenate([self.goal, self.goal1])
         ag = np.concatenate([obs['achieved_goal'], obs['achieved_goal1']])
         reward = self.compute_reward(ag, g, info)
-        cost = self.compute_cost(t)
+        if t is not None:
+            cost = self.compute_cost(t)
         # reward = self.compute_reward(obs['achieved_goal'], self.goal, info) + self.compute_reward(obs['achieved_goal1'], self.goal1, info)
-        if self.pro_tyep == 'CMDP':
+        if self.pro_type == 'CMDP':
 
             return obs, reward, cost, done, info
         else:
