@@ -8,6 +8,6 @@
         <mesh name="v_wrist2" file="stls/v_wrist2.stl" />
         <mesh name="v_wrist3" file="stls/v_wrist3.stl" />
         <mesh name="cube" file="stls/cube.stl" />
-        <mesh name="R10" file="stls/R10.stl"  scale="0.001 0.001 0.001" />
+        <mesh name="R10" file="stls/R10.stl" scale="0.001 0.001 0.001" />
     </asset>
 </mujoco>
