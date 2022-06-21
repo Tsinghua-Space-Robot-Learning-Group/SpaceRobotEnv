@@ -2,7 +2,7 @@
 
 
 **SpaceRobotEnv** is an open-sourced environments for trajectory planning of free-floating space robots.
-Different from the traditional robot, the free-floating space robot is a dynamic coupling system because of the non-actuated base, as shown in the [figure](## Introduction of free-floating space robot). 
+Different from the traditional robot, the free-floating space robot is a dynamic coupling system because of the non-actuated base, as shown in the figure below. 
 Therefore, model-based trajectory planning methods encounter many dif- ficulties in modeling and computing. 
 
 
