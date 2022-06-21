@@ -4,7 +4,7 @@ import copy
 import numpy as np
 
 import gym
-from gym import error, spaces
+from gym import spaces
 from gym.utils import seeding
 
 from gym.envs.robotics import utils
@@ -14,7 +14,9 @@ import mujoco_py
 
 PATH = os.getcwd()
 
-MODEL_XML_PATH = os.path.join(PATH,'SpaceRobotEnv','mujoco_files','spacerobot', 'spacerobot_state.xml')
+MODEL_XML_PATH = os.path.join(
+    PATH, "SpaceRobotEnv", "assets", "spacerobot", "spacerobot_state.xml"
+)
 DEFAULT_SIZE = 500
 
 
@@ -92,7 +94,9 @@ class RobotEnv(gym.GoalEnv):
             "act": action,
             "old_act": old_action,
         }
-        reward = self.compute_reward(obs['achieved_goal'], self.goal, action, old_action, info)
+        reward = self.compute_reward(
+            obs["achieved_goal"], self.goal, action, old_action, info
+        )
         return obs, reward, done, info
 
     def reset(self):
@@ -253,9 +257,8 @@ class SpacerobotEnv(RobotEnv):
 
     def _get_obs(self):
         # positions
-        grip_pos = self.sim.data.get_body_xpos('tip_frame')
-        dt = self.sim.nsubsteps * self.sim.model.opt.timestep
-        grip_velp = self.sim.data.get_body_xvelp('tip_frame') * dt
+        grip_pos = self.sim.data.get_body_xpos("tip_frame")
+        grip_velp = self.sim.data.get_body_xvelp("tip_frame") * self.dt
         robot_qpos, robot_qvel = utils.robot_get_obs(self.sim)
 
         gripper_state = robot_qpos[-1:]
