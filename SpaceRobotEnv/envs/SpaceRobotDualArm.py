@@ -4,7 +4,7 @@ import copy
 import numpy as np
 
 import gym
-from gym import error, spaces
+from gym import spaces
 from gym.utils import seeding
 
 from gym.envs.robotics import utils
@@ -14,7 +14,7 @@ import mujoco_py
 
 
 PATH = os.getcwd()
-MODEL_XML_PATH = os.path.join(PATH,'SpaceRobotEnv','mujoco_files', 'spacerobot', 'spacerobot_image.xml')
+MODEL_XML_PATH = os.path.join(PATH,'SpaceRobotEnv','assets', 'spacerobot', 'spacerobot_dualarm.xml')
 DEFAULT_SIZE = 500
 
 
@@ -39,7 +39,7 @@ class RobotEnv(gym.GoalEnv):
         # initalization
         self._env_setup(initial_qpos=initial_qpos)
         self.initial_state = copy.deepcopy(self.sim.get_state())
-        self.goal = self._sample_goal()
+        self.goal, self.goal1 = self._sample_goal()
 
         # set action_space and observation_space
         obs = self._get_obs()
@@ -54,18 +54,6 @@ class RobotEnv(gym.GoalEnv):
                 ),
                 observation=spaces.Box(
                     -np.inf, np.inf, shape=obs["observation"].shape, dtype="float32"
-                ),
-                base=spaces.Box(
-                    -np.inf, np.inf, shape=obs["base"].shape, dtype="float32"
-                ),
-                image=spaces.Box(
-                    -np.inf, np.inf, shape=obs["image"].shape, dtype="float32"
-                ),
-                rawimage=spaces.Box(
-                    -np.inf, np.inf, shape=obs["rawimage"].shape, dtype="float32"
-                ),
-                depth=spaces.Box(
-                    -np.inf, np.inf, shape=obs["depth"].shape, dtype="float32"
                 ),
             )
         )
@@ -92,21 +80,25 @@ class RobotEnv(gym.GoalEnv):
         self.np_random, seed = seeding.np_random(seed)
         return [seed]
 
-    def step(self, action):
-        old_action = self.sim.data.ctrl.copy() * (1 / 0.5)
+    def step(self, action, t= None):
         action = np.clip(action, self.action_space.low, self.action_space.high)
         self._set_action(action)  # do one step simulation here
         self._step_callback()
         obs = self._get_obs()
         done = False
         info = {
-            "is_success": self._is_success(obs["achieved_goal"], self.goal),
-            "act": action,
-            "old_act": old_action,
+            "is_success": self._is_success(obs["achieved_goal"], self.goal)
+            and self._is_success(obs["achieved_goal1"], self.goal1),
         }
-        g = self.goal
-        ag = obs["achieved_goal"]
+        g = np.concatenate([self.goal, self.goal1])
+        ag = np.concatenate([obs["achieved_goal"], obs["achieved_goal1"]])
         reward = self.compute_reward(ag, g, info)
+        if t is not None:
+            cost = self.compute_cost(t)
+        # reward = self.compute_reward(obs['achieved_goal'], self.goal, info) + self.compute_reward(obs['achieved_goal1'], self.goal1, info)
+        if self.pro_type == 'CMDP':
+
+            return obs, reward, cost, done, info
         return obs, reward, done, info
 
     def reset(self):
@@ -121,9 +113,13 @@ class RobotEnv(gym.GoalEnv):
         while not did_reset_sim:
             did_reset_sim = self._reset_sim()
 
-        self.goal = self._sample_goal()
+        self.goal, self.goal1 = self._sample_goal()
         obs = self._get_obs()
 
+        # TODO: set the position of cube
+
+        body_id = self.sim.model.geom_name2id("cube")
+        self.sim.model.geom_pos[body_id] = np.array([0, 0, 6])
         return obs
 
     def close(self):
@@ -147,6 +143,7 @@ class RobotEnv(gym.GoalEnv):
 
     def _get_viewer(self, mode):
         self.viewer = self._viewers.get(mode)
+
         if self.viewer is None:
             if mode == "human":
                 self.viewer = mujoco_py.MjViewer(self.sim)
@@ -156,9 +153,8 @@ class RobotEnv(gym.GoalEnv):
                 self.viewer = mujoco_py.MjRenderContextOffscreen(self.sim, device_id=-1)
                 self._viewer_setup()
                 # self.viewer.cam.trackbodyid = 0
-                # original version: cam_pos = np.array([0.7, 0.5, 5, 0.5, 0, -60])
                 # latest modification
-                cam_pos = np.array([1, 0.5, 5, 0.3, 0, -90])
+                cam_pos = np.array([0.5, 0, 5, 0.3, -30, 0])
                 for i in range(3):
                     self.viewer.cam.lookat[i] = cam_pos[i]
                 self.viewer.cam.distance = cam_pos[3]
@@ -235,6 +231,8 @@ class SpacerobotEnv(RobotEnv):
         distance_threshold,
         initial_qpos,
         reward_type,
+        pro_type,
+        c_coeff,
     ):
         """Initializes a new Fetch environment.
         Args:
@@ -243,10 +241,15 @@ class SpacerobotEnv(RobotEnv):
             distance_threshold (float): the threshold after which a goal is considered achieved
             initial_qpos (dict): a dictionary of joint names and values that define the initial configuration
             reward_type ('sparse' or 'dense'): the reward type, i.e. sparse or dense
+            pro_type ('MDP' or 'CMDP'):  the problem setting whether contains cost or not
+            c_coeff: cost coefficient
         """
         self.n_substeps = n_substeps
+        #        self.target_range = target_range
         self.distance_threshold = distance_threshold
         self.reward_type = reward_type
+        self.c_coeff = c_coeff
+        self.pro_type = pro_type
 
         super(SpacerobotEnv, self).__init__(
             model_path=model_path,
@@ -255,77 +258,93 @@ class SpacerobotEnv(RobotEnv):
         )
 
     def compute_reward(self, achieved_goal, desired_goal, info):
-
-        action = info["act"]
-        old_action = info["old_act"]
         # Compute distance between goal and the achieved goal.
         d = goal_distance(achieved_goal, desired_goal)
-        if self.reward_type == "sparse":
-            return -(d > self.distance_threshold).astype(np.float32)
-        elif self.reward_type == "distance":
-            return d
-        else:
-            # dense reward
-            return -(
-                0.001 * d ** 2
-                + np.log10(d ** 2 + 1e-6)
-                + 0.01 * np.linalg.norm(action - old_action) ** 2
+        d0 = goal_distance(achieved_goal[:3], desired_goal[:3])
+        d1 = goal_distance(achieved_goal[3:], desired_goal[3:])
+
+        reward = {
+            "sparse": -(d > self.distance_threshold).astype(np.float32),
+            "d0": d0,
+            "d1": d1,
+            "dense": -(0.001 * d ** 2 + np.log10(d ** 2 + 1e-6)),
+        }
+
+        return reward
+
+    def compute_cost(self, t):
+        # get the initial base attitude
+        post_base_att = self.sim.data.get_body_xquat("chasersat").copy()
+
+        # get the initial base attitude
+        post_base_pos = self.sim.data.get_body_xpos("chasersat").copy()
+
+        """ cost function is continue
+        """
+        cost = (
+            self.c_coeff
+            * t
+            * (
+                goal_distance(post_base_att, self.initial_base_att)
+                + goal_distance(post_base_pos, self.initial_base_pos)
             )
+        )
+
+        return cost
 
     def _set_action(self, action):
         """
-        :param action: 3*None->6*None
-        :return:
+        output action (velocity)
+        :param action: angle velocity of joints
+        :return: angle velocity of joints
         """
-        assert action.shape == (6,)
-        self.sim.data.ctrl[:] = action * 0.5 / 10
+        assert action.shape == (12,)
+        self.sim.data.ctrl[:] = action * 0.2
         for _ in range(self.n_substeps):
             self.sim.step()
 
     def _get_obs(self):
         # positions
         grip_pos = self.sim.data.get_body_xpos("tip_frame")
-        grip_velp = self.sim.data.get_body_xvelp("tip_frame") * self.dt
-        robot_qpos, robot_qvel = utils.robot_get_obs(self.sim)
-
-        # get raw_image
-        width, height = (64, 64)
-        image_raw, depth = self.render(mode="rgb_array", width=width, height=height)
-        image = (2.0 / 255.0) * image_raw - 1.0
-
-        # get high-resolution image
-        width, height = (640, 640)
-        clearimage, _ = self.render(mode="rgb_array", width=width, height=height)
-
-        base_pos = self.sim.data.qpos[:3].copy()
-        base_att = self.sim.data.qpos[3:7].copy()
-        base_att = rotations.quat2euler(base_att)
-        base = np.hstack((base_pos, base_att))
-
-        achieved_goal = grip_pos.copy()
-
+        grip_pos1 = self.sim.data.get_body_xpos("tip_frame1")
+        """
+        # get the rotation angle of the target
+        grip_rot = self.sim.data.get_body_xquat('tip_frame')
+        grip_rot = rotations.quat2euler(grip_rot)
+        grip_rot1 = self.sim.data.get_body_xquat('tip_frame1')
+        grip_rot1 = rotations.quat2euler(grip_rot1)     
+        """
+        dt = self.sim.nsubsteps * self.sim.model.opt.timestep
+        grip_velp = self.sim.data.get_body_xvelp("tip_frame") * dt
+        grip_velp1 = self.sim.data.get_body_xvelp("tip_frame1") * dt
+        """
+        achieved_goal = np.concatenate([grip_pos.copy(),grip_rot.copy()])
+        achieved_goal1 = np.concatenate([grip_pos1.copy(),grip_rot1.copy()]) 
+        """
         obs = np.concatenate(
             [
-                self.sim.data.qpos[7:13].copy(),
-                self.sim.data.qvel[6:12].copy(),
+                self.sim.data.qpos[:19].copy(),
+                self.sim.data.qvel[:18].copy(),
                 grip_pos,
+                grip_pos1,
                 grip_velp,
+                grip_velp1,
                 self.goal.copy(),
+                self.goal1.copy(),
             ]
         )
 
         return {
             "observation": obs.copy(),
-            "achieved_goal": achieved_goal.copy(),
+            "achieved_goal": grip_pos.copy(),
+            "achieved_goal1": grip_pos1.copy(),
             "desired_goal": self.goal.copy(),
-            "base": base.copy(),
-            "image": image_raw.copy(),
-            "rawimage": clearimage.copy(),
-            "depth": depth.copy(),
+            "desired_goal1": self.goal1.copy(),
         }
 
     def _viewer_setup(self):
-        body_id = self.sim.model.body_name2id("tip_frame")
+        # body_id = self.sim.model.body_name2id('forearm_link')
+        body_id = self.sim.model.body_name2id("wrist_3_link")
         lookat = self.sim.data.body_xpos[body_id]
         for idx, value in enumerate(lookat):
             self.viewer.cam.lookat[idx] = value
@@ -339,21 +358,54 @@ class SpacerobotEnv(RobotEnv):
         return True
 
     def _sample_goal(self):
+        goal_pos = self.sim.data.get_body_xpos("tip_frame").copy()
+        goal_pos1 = self.sim.data.get_body_xpos("tip_frame1").copy()
+        # goal_rot = np.array([0,0,0],dtype=np.float)
+        # goal_rot1 = np.array([0,0,0],dtype=np.float)
 
-        goal = self.initial_gripper_xpos[:3].copy()
-        d = goal_distance(self.sim.data.get_body_xpos("tip_frame").copy(), goal)
-
-        # random target position
-        goal[0] = self.initial_gripper_xpos[0] + self.np_random.uniform(-0.45, 0)
-        goal[1] = self.initial_gripper_xpos[1] + self.np_random.uniform(-0.3, 0.3)
-        goal[2] = self.initial_gripper_xpos[2] + self.np_random.uniform(0.1, 0.3)
-
-        # show target position
+        goal_pos[0] = self.sim.data.get_body_xpos("tip_frame")[0] + np.random.uniform(
+            -0.40, 0.0
+        )
+        goal_pos[1] = self.sim.data.get_body_xpos("tip_frame")[1] + np.random.uniform(
+            -0.25, 0.30
+        )
+        goal_pos[2] = self.sim.data.get_body_xpos("tip_frame")[2] + np.random.uniform(
+            0.0, 0.30
+        )
+        """
+        goal_rot[0] = np.random.uniform(-1.67, 1.67)
+        goal_rot[1] = np.random.uniform(-1.67, 1.67)
+        goal_rot[2] = np.random.uniform(-1.67, 1.67)
+        """
+        goal_pos1[0] = self.sim.data.get_body_xpos("tip_frame1")[0] + np.random.uniform(
+            -0.40, 0.0
+        )
+        goal_pos1[1] = self.sim.data.get_body_xpos("tip_frame1")[1] + np.random.uniform(
+            -0.30, 0.25
+        )
+        goal_pos1[2] = self.sim.data.get_body_xpos("tip_frame1")[2] + np.random.uniform(
+            0.0, 0.30
+        )
+        """
+        goal_rot1[0] = np.random.uniform(-1.67, 1.67)
+        goal_rot1[1] = np.random.uniform(-1.67, 1.67)
+        goal_rot1[2] = np.random.uniform(-1.67, 1.67)     
+        """
+        """
+        goal = np.concatenate((goal_pos, goal_rot)) #一维度的数据不影响
+        goal1 = np.concatenate((goal_pos1, goal_rot1))
+        """
+        goal = goal_pos
+        goal1 = goal_pos1
         site_id = self.sim.model.site_name2id("target0")
-        self.sim.model.site_pos[site_id] = goal
+        self.sim.model.site_pos[site_id] = goal_pos
+        # self.sim.model.site_quat[site_id] = rotations.euler2quat(goal_rot)
+        site_id1 = self.sim.model.site_name2id("target1")
+        self.sim.model.site_pos[site_id1] = goal_pos1
+        # self.sim.model.site_quat[site_id1] = rotations.euler2quat(goal_rot1)
         self.sim.forward()
 
-        return goal.copy()
+        return goal.copy(), goal1.copy()
 
     def _is_success(self, achieved_goal, desired_goal):
         d = goal_distance(achieved_goal, desired_goal)
@@ -367,19 +419,20 @@ class SpacerobotEnv(RobotEnv):
 
         # Extract information for sampling goals.
         self.initial_gripper_xpos = self.sim.data.get_body_xpos("tip_frame").copy()
+        self.initial_gripper_xpos1 = self.sim.data.get_body_xpos("tip_frame1").copy()
 
-        """
-        site_id = self.sim.model.site_name2id('target0')
-        self.sim.model.site_pos[site_id] = self.initial_gripper_xpos + self.np_random.uniform(-self.obj_range, self.obj_range, size=3)
-        self.sim.forward()
-        """
+        # get the initial base attitude
+        self.initial_base_att = self.sim.data.get_body_xquat("chasersat").copy()
+
+        # get the initial base position
+        self.initial_base_pos = self.sim.data.get_body_xpos("chasersat").copy()
 
     def render(self, mode="human", width=500, height=500):
         return super(SpacerobotEnv, self).render(mode, width, height)
 
 
-class SpaceRobotImage(SpacerobotEnv, gym.utils.EzPickle):
-    def __init__(self, reward_type="nosparse"):
+class SpaceRobotDualArm(SpacerobotEnv, gym.utils.EzPickle):
+    def __init__(self, reward_type="sparse", pro_type="MDP"):
         initial_qpos = {
             "arm:shoulder_pan_joint": 0.0,
             "arm:shoulder_lift_joint": 0.0,
@@ -387,6 +440,12 @@ class SpaceRobotImage(SpacerobotEnv, gym.utils.EzPickle):
             "arm:wrist_1_joint": 0.0,
             "arm:wrist_2_joint": 0.0,
             "arm:wrist_3_joint": 0.0,
+            "arm:shoulder_pan_joint1": 0.0,
+            "arm:shoulder_lift_joint1": 0.0,
+            "arm:elbow_joint1": 0.0,
+            "arm:wrist_1_joint1": 0.0,
+            "arm:wrist_2_joint1": 0.0,
+            "arm:wrist_3_joint1": 0.0,
         }
         SpacerobotEnv.__init__(
             self,
@@ -395,5 +454,7 @@ class SpaceRobotImage(SpacerobotEnv, gym.utils.EzPickle):
             distance_threshold=0.05,
             initial_qpos=initial_qpos,
             reward_type=reward_type,
+            pro_type=pro_type,
+            c_coeff=0.1,
         )
         gym.utils.EzPickle.__init__(self)
