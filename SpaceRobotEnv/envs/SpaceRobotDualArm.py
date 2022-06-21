@@ -8,12 +8,13 @@ from gym import spaces
 from gym.utils import seeding
 
 from gym.envs.robotics import utils
-
-# from gym.envs.robotics import rotations
+from gym.envs.robotics import rotations
 
 import mujoco_py
 
-MODEL_XML_PATH = os.path.join("mujoco_files", "spacerobot", "spacerobot_dualarm.xml")
+
+PATH = os.getcwd()
+MODEL_XML_PATH = os.path.join(PATH,'SpaceRobotEnv','assets', 'spacerobot', 'spacerobot_dualarm.xml')
 DEFAULT_SIZE = 500
 
 
@@ -79,7 +80,7 @@ class RobotEnv(gym.GoalEnv):
         self.np_random, seed = seeding.np_random(seed)
         return [seed]
 
-    def step(self, action, t):
+    def step(self, action, t= None):
         action = np.clip(action, self.action_space.low, self.action_space.high)
         self._set_action(action)  # do one step simulation here
         self._step_callback()
@@ -92,8 +93,11 @@ class RobotEnv(gym.GoalEnv):
         g = np.concatenate([self.goal, self.goal1])
         ag = np.concatenate([obs["achieved_goal"], obs["achieved_goal1"]])
         reward = self.compute_reward(ag, g, info)
-        if self.pro_tyep == "CMDP":
+        if t is not None:
             cost = self.compute_cost(t)
+        # reward = self.compute_reward(obs['achieved_goal'], self.goal, info) + self.compute_reward(obs['achieved_goal1'], self.goal1, info)
+        if self.pro_type == 'CMDP':
+
             return obs, reward, cost, done, info
         return obs, reward, done, info
 
