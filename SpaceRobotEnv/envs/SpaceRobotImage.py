@@ -321,8 +321,8 @@ class SpacerobotEnv(RobotEnv):
             "achieved_goal": achieved_goal.copy(),
             "desired_goal": self.goal.copy(),
             "base": base.copy(),
-            "image": image_raw.copy(),
-            "rawimage": clearimage.copy(),
+            "image": clearimage.copy(),
+            "rawimage": image_raw.copy(),
             "depth": depth.copy(),
         }
 
