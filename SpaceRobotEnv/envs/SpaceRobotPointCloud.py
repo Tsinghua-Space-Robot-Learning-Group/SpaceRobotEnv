@@ -10,7 +10,11 @@ from gym.utils import seeding
 from gym.envs.robotics import utils
 from gym.envs.robotics import rotations
 
+import open3d as o3d
 import mujoco_py
+import cv2 as cv
+
+import matplotlib.pyplot as plt
 
 
 PATH = os.getcwd()
@@ -295,9 +299,45 @@ class SpacerobotEnv(RobotEnv):
         image_raw, depth = self.render(mode="rgb_array", width=width, height=height)
         image = (2.0 / 255.0) * image_raw - 1.0
 
+        image_raw_processed  = cv.cvtColor(image_raw, cv.COLOR_BGR2GRAY)
+        depth_processed = (1000*(depth)).astype(np.uint16) 
+         # Open3d takes the depth image (uint16 milimeters) as inputs
+        
+        image_raw_o3d = o3d.geometry.Image(image_raw_processed)
+        depth_o3d = o3d.geometry.Image(depth_processed)
+        rgbd_image = o3d.geometry.RGBDImage.create_from_color_and_depth(image_raw_o3d, depth_o3d)
+
+        # show rgbd image 
+        # plt.subplot(1, 2, 1)
+        # plt.title('Space Robot RGBD image')
+        # plt.imshow(rgbd_image.color)
+        # plt.subplot(1, 2, 2)
+        # plt.title('Space Robot depth image')
+        # plt.imshow(rgbd_image.depth)
+        # plt.show()
+
+        pcd = o3d.geometry.PointCloud.create_from_rgbd_image(
+                    rgbd_image,
+                    o3d.camera.PinholeCameraIntrinsic(
+                        o3d.camera.PinholeCameraIntrinsicParameters.PrimeSenseDefault))
+        # Flip it, otherwise the pointcloud will be upside down
+        pcd.transform([[1, 0, 0, 0], [0, -1, 0, 0], [0, 0, -1, 0], [0, 0, 0, 1]])
+        # view point cloud
+        # o3d.visualization.draw_geometries([pcd])
+
+        # to save point cloud in directory and file
+        # point_cloud_dir : str
+        # point_cloud_file = os.path.join(point_cloud_dir, "demo_point_cloud2.ply")
+        #o3d.io.write_point_cloud(point_cloud_file, pcd)
+
+        # to read point cloud from file
+        # pcd = o3d.io.read_point_cloud(point_cloud_file)
+        # o3d.visualization.draw_geometries([pcd])
+
+
         # get high-resolution image
         width, height = (640, 640)
-        clearimage, _ = self.render(mode="rgb_array", width=width, height=height)
+        clearimage, _ = self.render(mode="rgb_array", width=width, height=height)  
 
         base_pos = self.sim.data.qpos[:3].copy()
         base_att = self.sim.data.qpos[3:7].copy()
@@ -321,9 +361,10 @@ class SpacerobotEnv(RobotEnv):
             "achieved_goal": achieved_goal.copy(),
             "desired_goal": self.goal.copy(),
             "base": base.copy(),
-            "image": clearimage.copy(),
+            "image": clearimage.copy(), 
             "rawimage": image_raw.copy(),
             "depth": depth.copy(),
+            "point_cloud" : pcd.copy()
         }
 
     def _viewer_setup(self):
@@ -380,7 +421,7 @@ class SpacerobotEnv(RobotEnv):
         return super(SpacerobotEnv, self).render(mode, width, height)
 
 
-class SpaceRobotImage(SpacerobotEnv, gym.utils.EzPickle):
+class SpaceRobotPointCloud(SpacerobotEnv, gym.utils.EzPickle):
     def __init__(self, reward_type="nosparse"):
         initial_qpos = {
             "arm:shoulder_pan_joint": 0.0,
