@@ -150,7 +150,7 @@ If you find SpaceRobotEnv useful, please cite our recent work in your publicatio
 ## The Team
 
 SpaceRobotEnv is a project maintained by 
-[Shengjie Wang](https://github.com/Shengjie-bob), [Xiang Zheng](https://github.com/x-zheng16), [Yuxue Cao](https://github.com/ShenGe123000) , [Fengbo Lan](https://github.com/lanrobot) at Tsinghua University. Also thanks a lot for the great contribution from [Tosin] (https://github.com/tohsin).
+[Shengjie Wang](https://github.com/Shengjie-bob), [Xiang Zheng](https://github.com/x-zheng16), [Yuxue Cao](https://github.com/ShenGe123000) , [Fengbo Lan](https://github.com/lanrobot) at Tsinghua University. Also thanks a lot for the great contribution from [Tosin](https://github.com/tohsin)  .
 
 
 ## License
