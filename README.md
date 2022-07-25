@@ -105,11 +105,11 @@ The 6-DoF UR5 model is chosen as the robot arm, and to simplify, we considered t
   - [ ] Bulid new environments
 
 ### Algorithms:
-  - [ ] PPO
+  - [x] PPO
   - [ ] TRPO
   - [ ] DDPG
   - [ ] TD3
-  - [ ] SAC
+  - [x] SAC
   - [ ] HER
   - [ ] [HDO](https://ieeexplore.ieee.org/abstract/document/9718193)
 
