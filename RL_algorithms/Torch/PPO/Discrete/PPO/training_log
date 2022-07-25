@@ -1,0 +1,403 @@
+episode 0 score %.1f avg_score 3.1 time_steps 512 learning_steps 25
+Saving models now
+episode 1 score %.1f avg_score 84.4 time_steps 1024 learning_steps 51
+Saving models now
+episode 2 score %.1f avg_score 87.2 time_steps 1536 learning_steps 76
+episode 3 score %.1f avg_score 83.3 time_steps 2048 learning_steps 102
+Saving models now
+episode 4 score %.1f avg_score 89.0 time_steps 2560 learning_steps 128
+Saving models now
+episode 5 score %.1f avg_score 89.6 time_steps 3072 learning_steps 153
+episode 6 score %.1f avg_score 77.1 time_steps 3584 learning_steps 179
+episode 7 score %.1f avg_score 83.1 time_steps 4096 learning_steps 204
+episode 8 score %.1f avg_score 86.3 time_steps 4608 learning_steps 230
+Saving models now
+episode 9 score %.1f avg_score 93.5 time_steps 5120 learning_steps 256
+Saving models now
+episode 10 score %.1f avg_score 98.7 time_steps 5632 learning_steps 281
+episode 11 score %.1f avg_score 92.7 time_steps 6144 learning_steps 307
+episode 12 score %.1f avg_score 88.9 time_steps 6656 learning_steps 332
+episode 13 score %.1f avg_score 86.0 time_steps 7168 learning_steps 358
+episode 14 score %.1f avg_score 89.4 time_steps 7680 learning_steps 384
+episode 15 score %.1f avg_score 85.3 time_steps 8192 learning_steps 409
+episode 16 score %.1f avg_score 84.5 time_steps 8704 learning_steps 435
+episode 17 score %.1f avg_score 84.9 time_steps 9216 learning_steps 460
+episode 18 score %.1f avg_score 94.6 time_steps 9728 learning_steps 486
+Saving models now
+episode 19 score %.1f avg_score 111.4 time_steps 10240 learning_steps 512
+Saving models now
+episode 20 score %.1f avg_score 130.2 time_steps 10752 learning_steps 537
+Saving models now
+episode 21 score %.1f avg_score 153.1 time_steps 11264 learning_steps 563
+Saving models now
+episode 22 score %.1f avg_score 171.2 time_steps 11776 learning_steps 588
+Saving models now
+episode 23 score %.1f avg_score 185.3 time_steps 12288 learning_steps 614
+Saving models now
+episode 24 score %.1f avg_score 198.7 time_steps 12800 learning_steps 640
+Saving models now
+episode 25 score %.1f avg_score 222.0 time_steps 13312 learning_steps 665
+Saving models now
+episode 26 score %.1f avg_score 234.9 time_steps 13824 learning_steps 691
+Saving models now
+episode 27 score %.1f avg_score 250.1 time_steps 14336 learning_steps 716
+Saving models now
+episode 28 score %.1f avg_score 258.6 time_steps 14848 learning_steps 742
+Saving models now
+episode 29 score %.1f avg_score 262.7 time_steps 15360 learning_steps 768
+Saving models now
+episode 30 score %.1f avg_score 269.3 time_steps 15872 learning_steps 793
+Saving models now
+episode 31 score %.1f avg_score 271.9 time_steps 16384 learning_steps 819
+Saving models now
+episode 32 score %.1f avg_score 276.2 time_steps 16896 learning_steps 844
+Saving models now
+episode 33 score %.1f avg_score 279.8 time_steps 17408 learning_steps 870
+Saving models now
+episode 34 score %.1f avg_score 287.1 time_steps 17920 learning_steps 896
+Saving models now
+episode 35 score %.1f avg_score 298.7 time_steps 18432 learning_steps 921
+Saving models now
+episode 36 score %.1f avg_score 306.9 time_steps 18944 learning_steps 947
+Saving models now
+episode 37 score %.1f avg_score 314.5 time_steps 19456 learning_steps 972
+Saving models now
+episode 38 score %.1f avg_score 315.5 time_steps 19968 learning_steps 998
+Saving models now
+episode 39 score %.1f avg_score 316.5 time_steps 20480 learning_steps 1024
+Saving models now
+episode 40 score %.1f avg_score 324.0 time_steps 20992 learning_steps 1049
+Saving models now
+episode 41 score %.1f avg_score 328.6 time_steps 21504 learning_steps 1075
+Saving models now
+episode 42 score %.1f avg_score 332.6 time_steps 22016 learning_steps 1100
+Saving models now
+episode 43 score %.1f avg_score 337.3 time_steps 22528 learning_steps 1126
+Saving models now
+episode 44 score %.1f avg_score 339.9 time_steps 23040 learning_steps 1152
+Saving models now
+episode 45 score %.1f avg_score 343.5 time_steps 23552 learning_steps 1177
+episode 46 score %.1f avg_score 343.3 time_steps 24064 learning_steps 1203
+Saving models now
+episode 47 score %.1f avg_score 344.2 time_steps 24576 learning_steps 1228
+Saving models now
+episode 48 score %.1f avg_score 347.3 time_steps 25088 learning_steps 1254
+Saving models now
+episode 49 score %.1f avg_score 357.3 time_steps 25600 learning_steps 1280
+Saving models now
+episode 50 score %.1f avg_score 358.6 time_steps 26112 learning_steps 1305
+Saving models now
+episode 51 score %.1f avg_score 363.1 time_steps 26624 learning_steps 1331
+Saving models now
+episode 52 score %.1f avg_score 364.6 time_steps 27136 learning_steps 1356
+Saving models now
+episode 53 score %.1f avg_score 367.7 time_steps 27648 learning_steps 1382
+Saving models now
+episode 54 score %.1f avg_score 374.3 time_steps 28160 learning_steps 1408
+Saving models now
+episode 55 score %.1f avg_score 376.0 time_steps 28672 learning_steps 1433
+Saving models now
+episode 56 score %.1f avg_score 379.5 time_steps 29184 learning_steps 1459
+episode 57 score %.1f avg_score 379.1 time_steps 29696 learning_steps 1484
+Saving models now
+episode 58 score %.1f avg_score 381.1 time_steps 30208 learning_steps 1510
+Saving models now
+episode 59 score %.1f avg_score 383.2 time_steps 30720 learning_steps 1536
+Saving models now
+episode 60 score %.1f avg_score 383.3 time_steps 31232 learning_steps 1561
+Saving models now
+episode 61 score %.1f avg_score 388.1 time_steps 31744 learning_steps 1587
+Saving models now
+episode 62 score %.1f avg_score 389.4 time_steps 32256 learning_steps 1612
+Saving models now
+episode 63 score %.1f avg_score 395.5 time_steps 32768 learning_steps 1638
+Saving models now
+episode 64 score %.1f avg_score 403.0 time_steps 33280 learning_steps 1664
+episode 65 score %.1f avg_score 402.1 time_steps 33792 learning_steps 1689
+episode 66 score %.1f avg_score 401.8 time_steps 34304 learning_steps 1715
+episode 67 score %.1f avg_score 401.6 time_steps 34816 learning_steps 1740
+episode 68 score %.1f avg_score 402.5 time_steps 35328 learning_steps 1766
+episode 69 score %.1f avg_score 402.5 time_steps 35840 learning_steps 1792
+Saving models now
+episode 70 score %.1f avg_score 404.2 time_steps 36352 learning_steps 1817
+Saving models now
+episode 71 score %.1f avg_score 406.3 time_steps 36864 learning_steps 1843
+episode 72 score %.1f avg_score 405.1 time_steps 37376 learning_steps 1868
+Saving models now
+episode 73 score %.1f avg_score 411.3 time_steps 37888 learning_steps 1894
+episode 74 score %.1f avg_score 411.2 time_steps 38400 learning_steps 1920
+Saving models now
+episode 75 score %.1f avg_score 412.0 time_steps 38912 learning_steps 1945
+episode 76 score %.1f avg_score 411.0 time_steps 39424 learning_steps 1971
+Saving models now
+episode 77 score %.1f avg_score 412.2 time_steps 39936 learning_steps 1996
+Saving models now
+episode 78 score %.1f avg_score 419.3 time_steps 40448 learning_steps 2022
+episode 79 score %.1f avg_score 419.1 time_steps 40960 learning_steps 2048
+Saving models now
+episode 80 score %.1f avg_score 420.1 time_steps 41472 learning_steps 2073
+Saving models now
+episode 81 score %.1f avg_score 420.9 time_steps 41984 learning_steps 2099
+Saving models now
+episode 82 score %.1f avg_score 422.4 time_steps 42496 learning_steps 2124
+Saving models now
+episode 83 score %.1f avg_score 426.2 time_steps 43008 learning_steps 2150
+Saving models now
+episode 84 score %.1f avg_score 429.3 time_steps 43520 learning_steps 2176
+Saving models now
+episode 85 score %.1f avg_score 430.5 time_steps 44032 learning_steps 2201
+Saving models now
+episode 86 score %.1f avg_score 431.0 time_steps 44544 learning_steps 2227
+Saving models now
+episode 87 score %.1f avg_score 431.3 time_steps 45056 learning_steps 2252
+episode 88 score %.1f avg_score 431.0 time_steps 45568 learning_steps 2278
+episode 89 score %.1f avg_score 429.8 time_steps 46080 learning_steps 2304
+Saving models now
+episode 90 score %.1f avg_score 432.5 time_steps 46592 learning_steps 2329
+Saving models now
+episode 91 score %.1f avg_score 434.9 time_steps 47104 learning_steps 2355
+Saving models now
+episode 92 score %.1f avg_score 436.1 time_steps 47616 learning_steps 2380
+Saving models now
+episode 93 score %.1f avg_score 438.3 time_steps 48128 learning_steps 2406
+episode 94 score %.1f avg_score 437.9 time_steps 48640 learning_steps 2432
+episode 95 score %.1f avg_score 437.1 time_steps 49152 learning_steps 2457
+Saving models now
+episode 96 score %.1f avg_score 438.7 time_steps 49664 learning_steps 2483
+Saving models now
+episode 97 score %.1f avg_score 442.2 time_steps 50176 learning_steps 2508
+Saving models now
+episode 98 score %.1f avg_score 442.7 time_steps 50688 learning_steps 2534
+episode 99 score %.1f avg_score 442.4 time_steps 51200 learning_steps 2560
+Saving models now
+episode 100 score %.1f avg_score 446.8 time_steps 51712 learning_steps 2585
+Saving models now
+episode 101 score %.1f avg_score 450.5 time_steps 52224 learning_steps 2611
+Saving models now
+episode 102 score %.1f avg_score 454.7 time_steps 52736 learning_steps 2636
+Saving models now
+episode 103 score %.1f avg_score 457.6 time_steps 53248 learning_steps 2662
+Saving models now
+episode 104 score %.1f avg_score 461.7 time_steps 53760 learning_steps 2688
+Saving models now
+episode 105 score %.1f avg_score 465.1 time_steps 54272 learning_steps 2713
+Saving models now
+episode 106 score %.1f avg_score 469.8 time_steps 54784 learning_steps 2739
+Saving models now
+episode 107 score %.1f avg_score 472.4 time_steps 55296 learning_steps 2764
+Saving models now
+episode 108 score %.1f avg_score 477.4 time_steps 55808 learning_steps 2790
+Saving models now
+episode 109 score %.1f avg_score 479.9 time_steps 56320 learning_steps 2816
+Saving models now
+episode 110 score %.1f avg_score 483.0 time_steps 56832 learning_steps 2841
+Saving models now
+episode 111 score %.1f avg_score 487.0 time_steps 57344 learning_steps 2867
+Saving models now
+episode 112 score %.1f avg_score 496.0 time_steps 57856 learning_steps 2892
+Saving models now
+episode 113 score %.1f avg_score 499.0 time_steps 58368 learning_steps 2918
+Saving models now
+episode 114 score %.1f avg_score 501.8 time_steps 58880 learning_steps 2944
+Saving models now
+episode 115 score %.1f avg_score 505.4 time_steps 59392 learning_steps 2969
+Saving models now
+episode 116 score %.1f avg_score 517.4 time_steps 59904 learning_steps 2995
+Saving models now
+episode 117 score %.1f avg_score 521.2 time_steps 60416 learning_steps 3020
+Saving models now
+episode 118 score %.1f avg_score 529.0 time_steps 60928 learning_steps 3046
+episode 119 score %.1f avg_score 528.8 time_steps 61440 learning_steps 3072
+episode 120 score %.1f avg_score 527.9 time_steps 61952 learning_steps 3097
+episode 121 score %.1f avg_score 526.2 time_steps 62464 learning_steps 3123
+episode 122 score %.1f avg_score 525.0 time_steps 62976 learning_steps 3148
+Saving models now
+episode 123 score %.1f avg_score 529.5 time_steps 63488 learning_steps 3174
+Saving models now
+episode 124 score %.1f avg_score 530.0 time_steps 64000 learning_steps 3200
+episode 125 score %.1f avg_score 527.8 time_steps 64512 learning_steps 3225
+episode 126 score %.1f avg_score 526.0 time_steps 65024 learning_steps 3251
+episode 127 score %.1f avg_score 525.1 time_steps 65536 learning_steps 3276
+episode 128 score %.1f avg_score 524.5 time_steps 66048 learning_steps 3302
+episode 129 score %.1f avg_score 523.4 time_steps 66560 learning_steps 3328
+episode 130 score %.1f avg_score 527.3 time_steps 67072 learning_steps 3353
+episode 131 score %.1f avg_score 527.3 time_steps 67584 learning_steps 3379
+Saving models now
+episode 132 score %.1f avg_score 530.5 time_steps 68096 learning_steps 3404
+episode 133 score %.1f avg_score 530.3 time_steps 68608 learning_steps 3430
+episode 134 score %.1f avg_score 529.0 time_steps 69120 learning_steps 3456
+episode 135 score %.1f avg_score 526.6 time_steps 69632 learning_steps 3481
+episode 136 score %.1f avg_score 524.7 time_steps 70144 learning_steps 3507
+episode 137 score %.1f avg_score 522.9 time_steps 70656 learning_steps 3532
+episode 138 score %.1f avg_score 526.9 time_steps 71168 learning_steps 3558
+episode 139 score %.1f avg_score 529.6 time_steps 71680 learning_steps 3584
+Saving models now
+episode 140 score %.1f avg_score 530.5 time_steps 72192 learning_steps 3609
+Saving models now
+episode 141 score %.1f avg_score 531.9 time_steps 72704 learning_steps 3635
+episode 142 score %.1f avg_score 530.2 time_steps 73216 learning_steps 3660
+episode 143 score %.1f avg_score 529.9 time_steps 73728 learning_steps 3686
+episode 144 score %.1f avg_score 530.6 time_steps 74240 learning_steps 3712
+Saving models now
+episode 145 score %.1f avg_score 534.5 time_steps 74752 learning_steps 3737
+Saving models now
+episode 146 score %.1f avg_score 535.1 time_steps 75264 learning_steps 3763
+episode 147 score %.1f avg_score 534.9 time_steps 75776 learning_steps 3788
+episode 148 score %.1f avg_score 534.5 time_steps 76288 learning_steps 3814
+episode 149 score %.1f avg_score 531.6 time_steps 76800 learning_steps 3840
+episode 150 score %.1f avg_score 530.9 time_steps 77312 learning_steps 3865
+episode 151 score %.1f avg_score 529.1 time_steps 77824 learning_steps 3891
+episode 152 score %.1f avg_score 528.4 time_steps 78336 learning_steps 3916
+episode 153 score %.1f avg_score 526.4 time_steps 78848 learning_steps 3942
+episode 154 score %.1f avg_score 522.5 time_steps 79360 learning_steps 3968
+episode 155 score %.1f avg_score 523.3 time_steps 79872 learning_steps 3993
+episode 156 score %.1f avg_score 522.6 time_steps 80384 learning_steps 4019
+episode 157 score %.1f avg_score 525.7 time_steps 80896 learning_steps 4044
+episode 158 score %.1f avg_score 524.9 time_steps 81408 learning_steps 4070
+episode 159 score %.1f avg_score 526.9 time_steps 81920 learning_steps 4096
+episode 160 score %.1f avg_score 531.7 time_steps 82432 learning_steps 4121
+episode 161 score %.1f avg_score 529.5 time_steps 82944 learning_steps 4147
+episode 162 score %.1f avg_score 529.8 time_steps 83456 learning_steps 4172
+episode 163 score %.1f avg_score 525.5 time_steps 83968 learning_steps 4198
+episode 164 score %.1f avg_score 521.7 time_steps 84480 learning_steps 4224
+episode 165 score %.1f avg_score 527.2 time_steps 84992 learning_steps 4249
+episode 166 score %.1f avg_score 529.4 time_steps 85504 learning_steps 4275
+episode 167 score %.1f avg_score 530.2 time_steps 86016 learning_steps 4300
+episode 168 score %.1f avg_score 531.1 time_steps 86528 learning_steps 4326
+episode 169 score %.1f avg_score 531.5 time_steps 87040 learning_steps 4352
+episode 170 score %.1f avg_score 532.2 time_steps 87552 learning_steps 4377
+Saving models now
+episode 171 score %.1f avg_score 535.3 time_steps 88064 learning_steps 4403
+Saving models now
+episode 172 score %.1f avg_score 536.8 time_steps 88576 learning_steps 4428
+episode 173 score %.1f avg_score 533.4 time_steps 89088 learning_steps 4454
+episode 174 score %.1f avg_score 534.7 time_steps 89600 learning_steps 4480
+episode 175 score %.1f avg_score 535.3 time_steps 90112 learning_steps 4505
+Saving models now
+episode 176 score %.1f avg_score 537.9 time_steps 90624 learning_steps 4531
+Saving models now
+episode 177 score %.1f avg_score 538.2 time_steps 91136 learning_steps 4556
+episode 178 score %.1f avg_score 534.4 time_steps 91648 learning_steps 4582
+episode 179 score %.1f avg_score 534.9 time_steps 92160 learning_steps 4608
+episode 180 score %.1f avg_score 533.3 time_steps 92672 learning_steps 4633
+episode 181 score %.1f avg_score 533.6 time_steps 93184 learning_steps 4659
+episode 182 score %.1f avg_score 535.1 time_steps 93696 learning_steps 4684
+episode 183 score %.1f avg_score 535.9 time_steps 94208 learning_steps 4710
+episode 184 score %.1f avg_score 535.0 time_steps 94720 learning_steps 4736
+episode 185 score %.1f avg_score 534.4 time_steps 95232 learning_steps 4761
+episode 186 score %.1f avg_score 534.8 time_steps 95744 learning_steps 4787
+episode 187 score %.1f avg_score 533.7 time_steps 96256 learning_steps 4812
+episode 188 score %.1f avg_score 533.4 time_steps 96768 learning_steps 4838
+episode 189 score %.1f avg_score 534.1 time_steps 97280 learning_steps 4864
+episode 190 score %.1f avg_score 536.3 time_steps 97792 learning_steps 4889
+episode 191 score %.1f avg_score 534.2 time_steps 98304 learning_steps 4915
+episode 192 score %.1f avg_score 532.9 time_steps 98816 learning_steps 4940
+episode 193 score %.1f avg_score 531.4 time_steps 99328 learning_steps 4966
+episode 194 score %.1f avg_score 530.6 time_steps 99840 learning_steps 4992
+episode 195 score %.1f avg_score 533.4 time_steps 100352 learning_steps 5017
+episode 196 score %.1f avg_score 531.1 time_steps 100864 learning_steps 5043
+episode 197 score %.1f avg_score 526.4 time_steps 101376 learning_steps 5068
+episode 198 score %.1f avg_score 527.3 time_steps 101888 learning_steps 5094
+episode 199 score %.1f avg_score 529.8 time_steps 102400 learning_steps 5120
+episode 200 score %.1f avg_score 531.3 time_steps 102912 learning_steps 5145
+episode 201 score %.1f avg_score 530.9 time_steps 103424 learning_steps 5171
+episode 202 score %.1f avg_score 531.5 time_steps 103936 learning_steps 5196
+episode 203 score %.1f avg_score 533.6 time_steps 104448 learning_steps 5222
+episode 204 score %.1f avg_score 533.9 time_steps 104960 learning_steps 5248
+episode 205 score %.1f avg_score 534.1 time_steps 105472 learning_steps 5273
+episode 206 score %.1f avg_score 533.7 time_steps 105984 learning_steps 5299
+episode 207 score %.1f avg_score 533.8 time_steps 106496 learning_steps 5324
+episode 208 score %.1f avg_score 531.9 time_steps 107008 learning_steps 5350
+episode 209 score %.1f avg_score 531.4 time_steps 107520 learning_steps 5376
+episode 210 score %.1f avg_score 531.8 time_steps 108032 learning_steps 5401
+episode 211 score %.1f avg_score 534.2 time_steps 108544 learning_steps 5427
+episode 212 score %.1f avg_score 529.2 time_steps 109056 learning_steps 5452
+episode 213 score %.1f avg_score 530.6 time_steps 109568 learning_steps 5478
+episode 214 score %.1f avg_score 531.5 time_steps 110080 learning_steps 5504
+episode 215 score %.1f avg_score 533.2 time_steps 110592 learning_steps 5529
+episode 216 score %.1f avg_score 525.6 time_steps 111104 learning_steps 5555
+episode 217 score %.1f avg_score 527.5 time_steps 111616 learning_steps 5580
+episode 218 score %.1f avg_score 520.9 time_steps 112128 learning_steps 5606
+episode 219 score %.1f avg_score 526.8 time_steps 112640 learning_steps 5632
+episode 220 score %.1f avg_score 527.3 time_steps 113152 learning_steps 5657
+episode 221 score %.1f avg_score 525.8 time_steps 113664 learning_steps 5683
+episode 222 score %.1f avg_score 527.3 time_steps 114176 learning_steps 5708
+episode 223 score %.1f avg_score 522.9 time_steps 114688 learning_steps 5734
+episode 224 score %.1f avg_score 522.1 time_steps 115200 learning_steps 5760
+episode 225 score %.1f avg_score 524.2 time_steps 115712 learning_steps 5785
+episode 226 score %.1f avg_score 525.0 time_steps 116224 learning_steps 5811
+episode 227 score %.1f avg_score 524.1 time_steps 116736 learning_steps 5836
+episode 228 score %.1f avg_score 525.5 time_steps 117248 learning_steps 5862
+episode 229 score %.1f avg_score 528.6 time_steps 117760 learning_steps 5888
+episode 230 score %.1f avg_score 523.3 time_steps 118272 learning_steps 5913
+episode 231 score %.1f avg_score 523.2 time_steps 118784 learning_steps 5939
+episode 232 score %.1f avg_score 520.6 time_steps 119296 learning_steps 5964
+episode 233 score %.1f avg_score 520.4 time_steps 119808 learning_steps 5990
+episode 234 score %.1f avg_score 521.8 time_steps 120320 learning_steps 6016
+episode 235 score %.1f avg_score 520.6 time_steps 120832 learning_steps 6041
+episode 236 score %.1f avg_score 520.7 time_steps 121344 learning_steps 6067
+episode 237 score %.1f avg_score 520.9 time_steps 121856 learning_steps 6092
+episode 238 score %.1f avg_score 519.4 time_steps 122368 learning_steps 6118
+episode 239 score %.1f avg_score 519.5 time_steps 122880 learning_steps 6144
+episode 240 score %.1f avg_score 515.8 time_steps 123392 learning_steps 6169
+episode 241 score %.1f avg_score 514.6 time_steps 123904 learning_steps 6195
+episode 242 score %.1f avg_score 515.6 time_steps 124416 learning_steps 6220
+episode 243 score %.1f avg_score 517.8 time_steps 124928 learning_steps 6246
+episode 244 score %.1f avg_score 516.1 time_steps 125440 learning_steps 6272
+episode 245 score %.1f avg_score 510.5 time_steps 125952 learning_steps 6297
+episode 246 score %.1f avg_score 512.0 time_steps 126464 learning_steps 6323
+episode 247 score %.1f avg_score 513.6 time_steps 126976 learning_steps 6348
+episode 248 score %.1f avg_score 513.4 time_steps 127488 learning_steps 6374
+episode 249 score %.1f avg_score 511.8 time_steps 128000 learning_steps 6400
+episode 250 score %.1f avg_score 513.0 time_steps 128512 learning_steps 6425
+episode 251 score %.1f avg_score 512.5 time_steps 129024 learning_steps 6451
+episode 252 score %.1f avg_score 512.5 time_steps 129536 learning_steps 6476
+episode 253 score %.1f avg_score 513.0 time_steps 130048 learning_steps 6502
+episode 254 score %.1f avg_score 518.9 time_steps 130560 learning_steps 6528
+episode 255 score %.1f avg_score 518.8 time_steps 131072 learning_steps 6553
+episode 256 score %.1f avg_score 521.4 time_steps 131584 learning_steps 6579
+episode 257 score %.1f avg_score 518.9 time_steps 132096 learning_steps 6604
+episode 258 score %.1f avg_score 521.2 time_steps 132608 learning_steps 6630
+episode 259 score %.1f avg_score 518.8 time_steps 133120 learning_steps 6656
+episode 260 score %.1f avg_score 516.9 time_steps 133632 learning_steps 6681
+episode 261 score %.1f avg_score 516.4 time_steps 134144 learning_steps 6707
+episode 262 score %.1f avg_score 515.4 time_steps 134656 learning_steps 6732
+episode 263 score %.1f avg_score 522.6 time_steps 135168 learning_steps 6758
+episode 264 score %.1f avg_score 522.1 time_steps 135680 learning_steps 6784
+episode 265 score %.1f avg_score 517.6 time_steps 136192 learning_steps 6809
+episode 266 score %.1f avg_score 516.7 time_steps 136704 learning_steps 6835
+episode 267 score %.1f avg_score 515.5 time_steps 137216 learning_steps 6860
+episode 268 score %.1f avg_score 515.5 time_steps 137728 learning_steps 6886
+episode 269 score %.1f avg_score 517.6 time_steps 138240 learning_steps 6912
+episode 270 score %.1f avg_score 518.5 time_steps 138752 learning_steps 6937
+episode 271 score %.1f avg_score 515.8 time_steps 139264 learning_steps 6963
+episode 272 score %.1f avg_score 514.6 time_steps 139776 learning_steps 6988
+episode 273 score %.1f avg_score 513.7 time_steps 140288 learning_steps 7014
+episode 274 score %.1f avg_score 514.7 time_steps 140800 learning_steps 7040
+episode 275 score %.1f avg_score 514.3 time_steps 141312 learning_steps 7065
+episode 276 score %.1f avg_score 515.0 time_steps 141824 learning_steps 7091
+episode 277 score %.1f avg_score 512.4 time_steps 142336 learning_steps 7116
+episode 278 score %.1f avg_score 513.6 time_steps 142848 learning_steps 7142
+episode 279 score %.1f avg_score 522.0 time_steps 143360 learning_steps 7168
+episode 280 score %.1f avg_score 522.9 time_steps 143872 learning_steps 7193
+episode 281 score %.1f avg_score 521.3 time_steps 144384 learning_steps 7219
+episode 282 score %.1f avg_score 522.3 time_steps 144896 learning_steps 7244
+episode 283 score %.1f avg_score 519.4 time_steps 145408 learning_steps 7270
+episode 284 score %.1f avg_score 523.3 time_steps 145920 learning_steps 7296
+episode 285 score %.1f avg_score 527.6 time_steps 146432 learning_steps 7321
+episode 286 score %.1f avg_score 529.7 time_steps 146944 learning_steps 7347
+episode 287 score %.1f avg_score 530.9 time_steps 147456 learning_steps 7372
+episode 288 score %.1f avg_score 532.2 time_steps 147968 learning_steps 7398
+episode 289 score %.1f avg_score 532.7 time_steps 148480 learning_steps 7424
+episode 290 score %.1f avg_score 527.3 time_steps 148992 learning_steps 7449
+episode 291 score %.1f avg_score 528.4 time_steps 149504 learning_steps 7475
+episode 292 score %.1f avg_score 533.2 time_steps 150016 learning_steps 7500
+episode 293 score %.1f avg_score 534.0 time_steps 150528 learning_steps 7526
+episode 294 score %.1f avg_score 535.5 time_steps 151040 learning_steps 7552
+episode 295 score %.1f avg_score 536.8 time_steps 151552 learning_steps 7577
+Saving models now
+episode 296 score %.1f avg_score 540.2 time_steps 152064 learning_steps 7603
+Saving models now
+episode 297 score %.1f avg_score 541.0 time_steps 152576 learning_steps 7628
+episode 298 score %.1f avg_score 540.9 time_steps 153088 learning_steps 7654
+episode 299 score %.1f avg_score 539.4 time_steps 153600 learning_steps 7680
