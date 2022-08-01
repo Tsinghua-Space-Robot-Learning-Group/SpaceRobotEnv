@@ -69,22 +69,7 @@ class Agent:
             value = self.critic(observation)
 
             return action.numpy(),  logp_a.numpy(), value.numpy()
-
-            state = T.tensor([observation], dtype=T.float).to(self.actor.device)
-            dist = self.actor(state)
-            value  = self.critic(state)
-
-            action = dist.sample()
-
-            # this is equivalent to the reinforce algorithm of probablity distribition
-            # probs = T.squeeze(dist.log_prob(action)).item() 
-            probs = dist.log_prob(action).sum(axis=-1)
-
-            action = T.squeeze(action)
-            value = T.squeeze(value).item()
-
-            return action, probs , value
-
+            
     def learn(self):
         for _ in range(self.n_epoch):
 
@@ -94,14 +79,18 @@ class Agent:
 
             values = vals_arr.copy()
             advantage = np.zeros(len(reward_arr), dtype=np.float32)
-
+            # calculate advantage = sigma_t + (gamma * lamda) * sigma_t+1 + (gamma * lamda) ^ 2 * sigma_t+2.....
+            # sigma_t = reward_t + gamma * Value(s_ t+1 ) - Value(s_t)
             for t in range(len(reward_arr)-1):
-                discount = 0.95
+                discount = 1
                 a_t = 0
                 for k in range(t, len(reward_arr)-1):
-                    a_t += discount*(reward_arr[k] + self.gamma*values[k+1]*\
+                    
+                    a_t += discount * (reward_arr[k] + self.gamma*values[k+1]*\
                             (1-int(dones_arr[k])) - values[k])
-                    discount *= self.gamma*self.gae_lambda
+
+                    #   discount term gamma * gae_lamda (y*lamda)
+                    discount *= self.gamma * self.gae_lambda
                 advantage[t] = a_t
             advantage = T.tensor(advantage).to(self.actor.device)
 
@@ -127,14 +116,15 @@ class Agent:
                 weighted_probs = advantage[batch] * prob_ratio
 
                 weighted_clipped_probs = T.clamp(prob_ratio, 1-self.policy_clip,
-                        1+self.policy_clip)*advantage[batch]
+                        1 + self.policy_clip) * advantage[batch]
+
                 actor_loss = -T.min(weighted_probs, weighted_clipped_probs).mean()
 
                 returns = advantage[batch] + values[batch]
                 critic_loss = (returns-critic_value)**2
                 critic_loss = critic_loss.mean()
 
-                total_loss = actor_loss + 0.5*critic_loss
+                total_loss = actor_loss + 0.5* critic_loss
                 self.actor.optimizer.zero_grad()
                 self.critic.optimiser.zero_grad()
                 # print("total loss", total_loss.item())

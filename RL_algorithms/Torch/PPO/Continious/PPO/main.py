@@ -13,9 +13,9 @@ import numpy as np
 
 if __name__ == '__main__':
     env = gym.make("SpaceRobotState-v0")
-    N = 70
+    N = 30
     batch_size = 16
-    n_epochs = 7
+    n_epochs = 3
     alpha = 0.0003
     action_space = env.action_space.shape[0]
     obs_shape = env.observation_space["observation"].shape
@@ -44,6 +44,7 @@ if __name__ == '__main__':
         score = 0
         while not done:
             action, prob, val = agent.choose_action(observation)
+            v = prob
             # a = action
             a = action.reshape(6,)
             observation_, reward, done, info = env.step(a)
