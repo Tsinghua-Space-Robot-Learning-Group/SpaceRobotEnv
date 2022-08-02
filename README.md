@@ -107,7 +107,7 @@ The 6-DoF UR5 model is chosen as the robot arm, and to simplify, we considered t
 ### Algorithms:
   - [x] PPO
   - [ ] TRPO
-  - [ ] DDPG
+  - [x] DDPG
   - [ ] TD3
   - [x] SAC
   - [ ] HER
