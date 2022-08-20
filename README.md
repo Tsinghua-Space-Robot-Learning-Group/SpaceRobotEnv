@@ -1,6 +1,6 @@
 # SpaceRobotEnv
 
-\ Note: our repo can be found in the OpenAI Gym Documentation now. Please see [SpaceRobotEnv](https://www.gymlibrary.ml/environments/third_party_environments/#spacerobotenv).    
+> Note: our repo can be found in the OpenAI Gym Documentation now. Please see [SpaceRobotEnv](https://www.gymlibrary.ml/environments/third_party_environments/#spacerobotenv).    
 
 **SpaceRobotEnv** is an open-sourced environments for trajectory planning of free-floating space robots.
 Different from the traditional robot, the free-floating space robot is a dynamic coupling system because of the non-actuated base, as shown in the figure below. 
