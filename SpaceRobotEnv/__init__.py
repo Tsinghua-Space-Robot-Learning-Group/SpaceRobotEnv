@@ -21,3 +21,15 @@ register(
     entry_point="SpaceRobotEnv.envs:SpaceRobotDualArm",
     max_episode_steps=512,
 )
+
+register(
+    id="SpaceRobotPointCloud-v0",
+    entry_point="SpaceRobotEnv.envs:SpaceRobotPointCloud",
+    max_episode_steps=512,
+)
+
+register(
+    id="SpaceRobotCost-v0",
+    entry_point="SpaceRobotEnv.envs:SpaceRobotCost",
+    max_episode_steps=512,
+)
