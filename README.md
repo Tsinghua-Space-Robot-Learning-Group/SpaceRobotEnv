@@ -34,12 +34,13 @@ To better help the community study this problem, SpaceRobotEnv are developed wit
 Environments of this repo are as follows:
 * **SpaceRobotState-v0**
     * State vector contains the angular positions and velocities of joints, the positions and velocities of end-effectors and the positions of goals. The core goal is to make the end-effector reach the goal randomly selected within a large space. 
+* **SpaceRobotCost-v0**
+    * The task is to make the end-effector reach a random goal while avoiding obvious movement of the base, especially for its orientation. Because the rotation of the base will cause the interruption of communication with the earth. 
 * **SpaceRobotImage-v0**
     * State vector only contains images information. The core goal is the same as that of the `SpaceRobotState-v0` environment.
 * **SpaceRobotDualArm-v0**
     * The free floating space robot owns two robotic arms which are attached with the base. That means two end-effectors are corresponding to two goal positions. 
     When two end-effectors reach the goals together, the task is finished. 
-
 * **SpaceRobotPointCloud-v0**
     * State vector contains the point colouds information. The core goal is the same as that of the `SpaceRobotState-v0` environment.
 
