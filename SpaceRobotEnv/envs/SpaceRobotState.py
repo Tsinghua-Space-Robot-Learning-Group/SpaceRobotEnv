@@ -63,7 +63,7 @@ class RobotEnv(gym.GoalEnv):
     def _set_action_space(self):
         bounds = self.model.actuator_ctrlrange.copy()
         low, high = bounds.T
-        self.action_space = spaces.Box(low=low, high=high, dtype=np.float32)
+        self.action_space = spaces.Box( low = low, high = high, dtype = np.float32)
         return self.action_space
 
     @property

@@ -1,5 +1,6 @@
 # SpaceRobotEnv
 
+> Note: our repo can be found in the OpenAI Gym Documentation now. Please see [SpaceRobotEnv](https://www.gymlibrary.ml/environments/third_party_environments/#spacerobotenv).    
 
 **SpaceRobotEnv** is an open-sourced environments for trajectory planning of free-floating space robots.
 Different from the traditional robot, the free-floating space robot is a dynamic coupling system because of the non-actuated base, as shown in the figure below. 
@@ -39,6 +40,8 @@ Environments of this repo are as follows:
     * The free floating space robot owns two robotic arms which are attached with the base. That means two end-effectors are corresponding to two goal positions. 
     When two end-effectors reach the goals together, the task is finished. 
 
+* **SpaceRobotPointCloud-v0**
+    * State vector contains the point colouds information. The core goal is the same as that of the `SpaceRobotState-v0` environment.
 
 ## Installation
 
@@ -98,16 +101,16 @@ The 6-DoF UR5 model is chosen as the robot arm, and to simplify, we considered t
 
 
 ### Tasks under development:  
-  - [ ] Point cloud inputs
+  - [x] Point cloud inputs
   - [ ] Add new torque controllers, like impedance controller.
   - [ ] Bulid new environments
 
 ### Algorithms:
-  - [ ] PPO
+  - [x] PPO
   - [ ] TRPO
-  - [ ] DDPG
+  - [x] DDPG
   - [ ] TD3
-  - [ ] SAC
+  - [x] SAC
   - [ ] HER
   - [ ] [HDO](https://ieeexplore.ieee.org/abstract/document/9718193)
 
@@ -147,8 +150,8 @@ If you find SpaceRobotEnv useful, please cite our recent work in your publicatio
   
 ## The Team
 
-SpaceRobotEnv is a project contributed by 
-[Shengjie Wang](https://github.com/Shengjie-bob), [Xiang Zheng](https://github.com/x-zheng16), [Yuxue Cao](https://github.com/ShenGe123000) , [Fengbo Lan](https://github.com/lanrobot) at Tsinghua University.
+SpaceRobotEnv is a project maintained by 
+[Shengjie Wang](https://github.com/Shengjie-bob), [Xiang Zheng](https://github.com/x-zheng16), [Yuxue Cao](https://github.com/ShenGe123000) , [Fengbo Lan](https://github.com/lanrobot) at Tsinghua University. Also thanks a lot for the great contribution from [Tosin](https://github.com/tohsin)  .
 
 
 ## License
