@@ -147,6 +147,14 @@ If you find SpaceRobotEnv useful, please cite our recent work in your publicatio
   year={2021},
   organization={IEEE}
 }
+
+@article{cao2022reinforcement,
+  title={Reinforcement Learning with Prior Policy Guidance for Motion Planning of Dual-Arm Free-Floating Space Robot},
+  author={Cao, Yuxue and Wang, Shengjie and Zheng, Xiang and Ma, Wenke and Xie, Xinru and Liu, Lei},
+  journal={arXiv preprint arXiv:2209.01434},
+  year={2022}
+}
+
 ```  
   
 ## The Team
