@@ -41,6 +41,9 @@ Environments of this repo are as follows:
 * **SpaceRobotDualArm-v0**
     * The free floating space robot owns two robotic arms which are attached with the base. That means two end-effectors are corresponding to two goal positions. 
     When two end-effectors reach the goals together, the task is finished. 
+* **SpaceRobotReorientation-v0**
+    * The free floating space robot owns two robotic arms which are attached with the base. The inital orientation of the base is sampled randomly in each episode. 
+    When two arms help the base to reach the target orientation, the task is finished.     
 * **SpaceRobotPointCloud-v0**
     * State vector contains the point colouds information. The core goal is the same as that of the `SpaceRobotState-v0` environment.
 
