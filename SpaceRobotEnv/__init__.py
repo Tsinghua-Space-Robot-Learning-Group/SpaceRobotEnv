@@ -33,3 +33,9 @@ register(
     entry_point="SpaceRobotEnv.envs:SpaceRobotCost",
     max_episode_steps=512,
 )
+
+register(
+    id="SpaceRobotReorientation-v0",
+    entry_point="SpaceRobotEnv.envs:SpaceRobotReorientation",
+    max_episode_steps=512,
+)
